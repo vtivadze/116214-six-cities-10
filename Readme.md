@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
 * Студент: [Vakhtang Tivadze](https://up.htmlacademy.ru/react/10/user/116214).
-* Наставник: `Неизвестно`.
+* Наставник: `Rail Sakhaviev`.
 
 ---
 
