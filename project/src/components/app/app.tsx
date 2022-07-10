@@ -1,5 +1,7 @@
-function App(): JSX.Element {
-  return <p>Hello, world!</p>;
+import MainScreen from '../../pages/main-screen/main-screen';
+
+function App({placeCount}: {placeCount: number}): JSX.Element {
+  return <MainScreen placeCount={placeCount} />;
 }
 
 export default App;
