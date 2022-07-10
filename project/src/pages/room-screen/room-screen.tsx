@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 
-function PropertyScreen(): JSX.Element {
+function RoomScreen(): JSX.Element {
   return (
     <Fragment>
       <section className="property">
@@ -444,4 +444,4 @@ function PropertyScreen(): JSX.Element {
   );
 }
 
-export default PropertyScreen;
+export default RoomScreen;
