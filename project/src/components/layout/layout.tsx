@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom';
+import Header from '../header/header';
 import * as constants from '../../constants';
 
 function Layout(): JSX.Element {
@@ -8,6 +9,7 @@ function Layout(): JSX.Element {
 
   return (
     <div className={pageClassName}>
+      <Header currentElementName={currentElementName} />
       <Outlet />
     </div>
   );

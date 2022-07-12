@@ -14,7 +14,7 @@ function App({placeCount}: {placeCount: number}): JSX.Element {
           <Route index element={<MainScreen placeCount={placeCount} />} />
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/favorites' element={<FavoritesScreen />} />
-          <Route path='/offer/:id' element={<RoomScreen />} />
+          <Route path='/offer' element={<RoomScreen />} />
           <Route path='*' element={<Page404Screen />} />
         </Route>
       </Routes>
