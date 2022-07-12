@@ -1,4 +1,4 @@
-import Place from '../../components/place/place';
+import RoomItem from '../../components/room-item/room-item';
 
 function MainScreen({ placeCount }: { placeCount: number }): JSX.Element {
   return (
@@ -143,11 +143,11 @@ function MainScreen({ placeCount }: { placeCount: number }): JSX.Element {
                   </ul>
                 </form>
                 <div className="cities__places-list places__list tabs__content">
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
-                  <Place />
+                  <RoomItem />
+                  <RoomItem />
+                  <RoomItem />
+                  <RoomItem />
+                  <RoomItem />
                 </div>
               </section>
               <div className="cities__right-section">
