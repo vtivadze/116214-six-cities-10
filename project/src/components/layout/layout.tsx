@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../header/header';
-import {routes, pageClassNames} from '../../constants';
+import Footer from '../footer/footer';
+import {routes, pageClassNames, hasFooter} from '../../constants';
 
 function Layout(): JSX.Element {
   const currentPath = useLocation();
@@ -11,6 +12,7 @@ function Layout(): JSX.Element {
     <div className={pageClassName}>
       <Header currentElementName={currentElementName} />
       <Outlet />
+      {hasFooter.includes(currentElementName) && <Footer />}
     </div>
   );
 }
