@@ -17,3 +17,17 @@ export const pageClassNames: {[key: string]: string} = {
 export const hasFooter: string[] = [
   'favorites',
 ];
+
+export const headerLogoConfig = {
+  destination: 'header',
+  isActive: true,
+  width: '81',
+  height: '41'
+};
+
+export const footerLogoConfig = {
+  destination: 'footer',
+  isActive: false,
+  width: '64',
+  height: '33'
+};
