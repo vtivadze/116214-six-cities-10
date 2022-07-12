@@ -31,3 +31,7 @@ export const footerLogoConfig = {
   width: '64',
   height: '33'
 };
+
+export const locations = [
+  'Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hambrug', 'Dusseldorf'
+];
