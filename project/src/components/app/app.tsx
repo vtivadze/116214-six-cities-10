@@ -4,7 +4,7 @@ import MainScreen from '../../pages/main-screen/main-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
 import RoomScreen from '../../pages/room-screen/room-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
-import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
+import Page404Screen from '../../pages/page-404-screen/page-404-screen';
 
 function App({placeCount}: {placeCount: number}): JSX.Element {
   return (
@@ -15,7 +15,7 @@ function App({placeCount}: {placeCount: number}): JSX.Element {
           <Route path='/login' element={<LoginScreen />} />
           <Route path='/favorites' element={<FavoritesScreen />} />
           <Route path='/offer/:id' element={<RoomScreen />} />
-          <Route path='*' element={<NotFoundScreen />} />
+          <Route path='*' element={<Page404Screen />} />
         </Route>
       </Routes>
     </BrowserRouter>

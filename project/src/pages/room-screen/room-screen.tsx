@@ -1,6 +1,6 @@
 function RoomScreen(): JSX.Element {
   return (
-    <div className="page">
+    <>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -509,7 +509,7 @@ function RoomScreen(): JSX.Element {
           </section>
         </div>
       </main>
-    </div>
+    </>
   );
 }
 

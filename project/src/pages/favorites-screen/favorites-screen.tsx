@@ -1,6 +1,6 @@
 function FavoritesScreen(): JSX.Element {
   return (
-    <div className="page">
+    <>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -232,7 +232,7 @@ function FavoritesScreen(): JSX.Element {
           />
         </a>
       </footer>
-    </div>
+    </>
   );
 }
 

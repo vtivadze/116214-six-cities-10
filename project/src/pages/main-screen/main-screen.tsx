@@ -2,7 +2,7 @@ import RoomItem from '../../components/room-item/room-item';
 
 function MainScreen({ placeCount }: { placeCount: number }): JSX.Element {
   return (
-    <div className="page page--gray page--main">
+    <>
       <header className="header">
         <div className="container">
           <div className="header__wrapper">
@@ -131,7 +131,7 @@ function MainScreen({ placeCount }: { placeCount: number }): JSX.Element {
           </div>
         </div>
       </main>
-    </div>
+    </>
   );
 }
 
