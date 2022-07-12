@@ -6,7 +6,11 @@ import RoomScreen from '../../pages/room-screen/room-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import Page404Screen from '../../pages/page-404-screen/page-404-screen';
 
-function App({placeCount}: {placeCount: number}): JSX.Element {
+type AppProps = {
+  placeCount: number;
+}
+
+function App({placeCount}: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>

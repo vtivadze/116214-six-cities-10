@@ -1,6 +1,10 @@
 import RoomItem from '../../components/room-item/room-item';
 
-function MainScreen({ placeCount }: { placeCount: number }): JSX.Element {
+type MainScreenProps = {
+  placeCount: number;
+}
+
+function MainScreen({ placeCount }: MainScreenProps): JSX.Element {
   return (
     <main className="page__main page__main--index">
       <h1 className="visually-hidden">Cities</h1>

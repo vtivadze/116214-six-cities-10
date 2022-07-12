@@ -1,11 +1,11 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../header/header';
-import * as constants from '../../constants';
+import {routes, pageClassNames} from '../../constants';
 
 function Layout(): JSX.Element {
   const currentPath = useLocation();
-  const currentElementName = constants.ROUTES[currentPath.pathname];
-  const pageClassName = constants.PAGE_CLASS_NAME[currentElementName];
+  const currentElementName = routes[currentPath.pathname];
+  const pageClassName = pageClassNames[currentElementName];
 
   return (
     <div className={pageClassName}>
