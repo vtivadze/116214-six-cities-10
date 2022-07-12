@@ -1,4 +1,4 @@
-function RoomScreen(): JSX.Element {
+function OfferScreen(): JSX.Element {
   return (
     <>
       <div style={{ display: 'none' }}>
@@ -539,4 +539,4 @@ function RoomScreen(): JSX.Element {
   );
 }
 
-export default RoomScreen;
+export default OfferScreen;
