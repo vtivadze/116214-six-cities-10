@@ -1,8 +1,22 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import MainScreen from '../../pages/main-screen/main-screen';
+import LoginScreen from '../../pages/login-screen/login-screen';
+import RoomScreen from '../../pages/room-screen/room-screen';
+import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
+import NotFoundScreen from '../../pages/not-found-screen/not-found-screen';
 
 function App({placeCount}: {placeCount: number}): JSX.Element {
-  return <MainScreen placeCount={placeCount} />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<MainScreen placeCount={placeCount} />} />
+        <Route path='/login' element={<LoginScreen />} />
+        <Route path='/favorites' element={<FavoritesScreen />} />
+        <Route path='/offer/:id' element={<RoomScreen />} />
+        <Route path='*' element={<NotFoundScreen />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
