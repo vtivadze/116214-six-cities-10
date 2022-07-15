@@ -1,5 +1,5 @@
 import LocationItem from '../location-item/location-item';
-import { locations } from '../../constants';
+import { locations } from '../../../constants';
 
 function LocationList(): JSX.Element {
   return (

@@ -1,5 +1,12 @@
 export const PLACE_COUNT = 312;
 
+export enum AppRoute {
+  Root = '/',
+  Login = '/login',
+  Favorites = '/favorites',
+  Offer = '/root',
+}
+
 export const routes: {[key: string]: string} = {
   '/': 'main',
   '/login': 'login',

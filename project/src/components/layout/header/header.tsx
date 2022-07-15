@@ -1,6 +1,6 @@
-import Nav from '../nav/nav';
-import Logo from '../logo/logo';
-import { headerLogoConfig } from '../../constants';
+import Nav from '../../nav/nav';
+import Logo from '../../logo/logo';
+import { headerLogoConfig } from '../../../constants';
 
 type HeaderProps = {
   currentElementName: string;

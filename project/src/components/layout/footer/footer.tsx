@@ -1,5 +1,5 @@
-import Logo from '../logo/logo';
-import { footerLogoConfig } from '../../constants';
+import Logo from '../../logo/logo';
+import { footerLogoConfig } from '../../../constants';
 
 function Footer(): JSX.Element {
   return (
