@@ -20,7 +20,3 @@ export const pageClassNames: {[key: string]: string} = {
   'favorites': 'page',
   'room': 'page',
 };
-
-export const locations = [
-  'Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hambrug', 'Dusseldorf'
-];

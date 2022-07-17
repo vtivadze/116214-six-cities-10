@@ -1,5 +1,5 @@
 import RoomItem from '../../components/room-item/room-item';
-import LocationList from '../../components/location/location-list/location-list';
+import LocationList from '../../components/location-list/location-list';
 
 type MainScreenProps = {
   placeCount: number;
