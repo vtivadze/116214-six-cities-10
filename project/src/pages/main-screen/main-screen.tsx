@@ -53,7 +53,9 @@ function MainScreen({ placeCount, offers }: MainScreenProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <OfferList offers={offers} />
+              <div className="cities__places-list places__list tabs__content">
+                <OfferList offers={offers} />
+              </div>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>

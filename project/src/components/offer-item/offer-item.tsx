@@ -1,13 +1,19 @@
 import {Offer} from '../../types/offer';
 
 type OfferItemProps = {
-  key: number,
+  key: string,
   offer: Offer,
+  onActiveCard: (offerId: string) => void;
 }
 
-function OfferItem({offer, key}: OfferItemProps): JSX.Element {
+function OfferItem({offer, key, onActiveCard}: OfferItemProps): JSX.Element {
+  function handleMouseOver(evt: React.MouseEvent<HTMLElement>): void {
+    const cardId = evt.currentTarget.id;
+    onActiveCard(cardId);
+  }
+
   return (
-    <article className="cities__card place-card">
+    <article className="cities__card place-card" id={offer.id} onMouseOver={handleMouseOver}>
       <div className="place-card__mark">
         <span>{offer.premium ? 'Premium' : null}</span>
       </div>
