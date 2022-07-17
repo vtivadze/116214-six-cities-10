@@ -6,7 +6,7 @@ type PrivateRouteProps = {
 }
 
 function PrivateRoute({children}: PrivateRouteProps): JSX.Element {
-  const isLogin = false;
+  const isLogin = true;
 
   return isLogin ? children : <Navigate to={AppRoute.Login} />;
 }
