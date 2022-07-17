@@ -4,7 +4,7 @@ export enum AppRoute {
   Root = '/',
   Login = '/login',
   Favorites = '/favorites',
-  Offer = '/root',
+  Offer = '/room',
 }
 
 export const routes: {[key: string]: string} = {
@@ -12,11 +12,4 @@ export const routes: {[key: string]: string} = {
   '/login': 'login',
   '/favorites': 'favorites',
   '/offer': 'room',
-};
-
-export const pageClassNames: {[key: string]: string} = {
-  'main': 'page page--gray page--main',
-  'login': 'page page--gray page--login',
-  'favorites': 'page',
-  'room': 'page',
 };
