@@ -1,5 +1,5 @@
 import Header from '../../components/header/header';
-import RoomItem from '../../components/room-item/room-item';
+import OfferItem from '../../components/offer-item/offer-item';
 import LocationList from '../../components/location-list/location-list';
 
 type MainScreenProps = {
@@ -52,11 +52,11 @@ function MainScreen({ placeCount }: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <RoomItem />
-                <RoomItem />
-                <RoomItem />
-                <RoomItem />
-                <RoomItem />
+                <OfferItem />
+                <OfferItem />
+                <OfferItem />
+                <OfferItem />
+                <OfferItem />
               </div>
             </section>
             <div className="cities__right-section">
