@@ -4,12 +4,5 @@ export enum AppRoute {
   Root = '/',
   Login = '/login',
   Favorites = '/favorites',
-  Offer = '/room',
+  Offer = '/offer',
 }
-
-export const routes: {[key: string]: string} = {
-  '/': 'main',
-  '/login': 'login',
-  '/favorites': 'favorites',
-  '/offer': 'room',
-};

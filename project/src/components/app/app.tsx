@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AppRoute } from '../../constants';
 import MainScreen from '../../pages/main-screen/main-screen';
 import LoginScreen from '../../pages/login-screen/login-screen';
-import RoomScreen from '../../pages/room-screen/room-screen';
+import OfferScreen from '../../pages/offer-screen/offer-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import Page404Screen from '../../pages/page-404-screen/page-404-screen';
 import PrivateRoute from '../private-route/private-route';
@@ -28,7 +28,7 @@ function App({ placeCount }: AppProps): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<RoomScreen />} />
+        <Route path={AppRoute.Offer} element={<OfferScreen />} />
         <Route path="*" element={<Page404Screen />} />
       </Routes>
     </BrowserRouter>
