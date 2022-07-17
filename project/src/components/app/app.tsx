@@ -6,12 +6,16 @@ import OfferScreen from '../../pages/offer-screen/offer-screen';
 import FavoritesScreen from '../../pages/favorites-screen/favorites-screen';
 import Page404Screen from '../../pages/page-404-screen/page-404-screen';
 import PrivateRoute from '../private-route/private-route';
+import {Offer} from '../../types/offer';
+import {Review} from '../../types/review';
 
 type AppProps = {
   placeCount: number;
+  offers: Offer[];
+  reviews: Review[];
 };
 
-function App({ placeCount }: AppProps): JSX.Element {
+function App({ placeCount, offers, reviews }: AppProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
