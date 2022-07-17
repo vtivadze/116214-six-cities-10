@@ -1,6 +1,11 @@
 import {Offer} from '../../types/offer';
 
-function OfferItem(offer: Offer): JSX.Element {
+type OfferItemProps = {
+  key: number,
+  offer: Offer,
+}
+
+function OfferItem({offer, key}: OfferItemProps): JSX.Element {
   return (
     <article className="cities__card place-card">
       <div className="place-card__mark">
