@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Offer } from '../../types/offer';
 
 type OfferItemProps = {
@@ -33,7 +34,7 @@ function OfferItem({
         </div>
       ) : null}
       <div className={`${classNamePrefix}__image-wrapper place-card__image-wrapper`}>
-        <a href={`offer/${offer.id}`}>
+        <Link to={`offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
@@ -41,7 +42,7 @@ function OfferItem({
             height="200"
             alt={offer.title}
           />
-        </a>
+        </Link>
       </div>
       <div className={`place-card__info ${pageName === 'favorites' ? 'favorites__card-info' : null}`}>
         <div className="place-card__price-wrapper">

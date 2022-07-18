@@ -32,7 +32,7 @@ function App({ placeCount, offers, reviews }: AppProps): JSX.Element {
             </PrivateRoute>
           }
         />
-        <Route path={AppRoute.Offer} element={<OfferScreen />} />
+        <Route path={AppRoute.Offer} element={<OfferScreen reviews={reviews} />} />
         <Route path="*" element={<Page404Screen />} />
       </Routes>
     </BrowserRouter>
