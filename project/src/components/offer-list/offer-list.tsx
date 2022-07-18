@@ -7,16 +7,17 @@ type OfferListProp = {
 };
 
 function OfferList({ offers }: OfferListProp): JSX.Element {
-  const [activeCardId, setActiveCardId] = useState();
-
-  function onActiveCard(cardId: string) {
+  const [activeCardId, setActiveCardId] = useState<string | undefined>();
+  // eslint-disable-next-line no-console
+  console.log(activeCardId);
+  function handleActivateCard(cardId: string) {
     setActiveCardId(cardId);
   }
 
   return (
     <>
       {offers.map((offer) => (
-        <OfferItem key={offer.id} offer={offer} onActiveCard={onActiveCard} />
+        <OfferItem key={offer.id} offer={offer} onActivateCard={handleActivateCard} />
       ))}
     </>
   );

@@ -3,13 +3,13 @@ import {Offer} from '../../types/offer';
 type OfferItemProps = {
   key: string,
   offer: Offer,
-  onActiveCard: (offerId: string) => void;
+  onActivateCard: (offerId: string) => void;
 }
 
-function OfferItem({offer, key, onActiveCard}: OfferItemProps): JSX.Element {
+function OfferItem({offer, key, onActivateCard}: OfferItemProps): JSX.Element {
   function handleMouseOver(evt: React.MouseEvent<HTMLElement>): void {
     const cardId = evt.currentTarget.id;
-    onActiveCard(cardId);
+    onActivateCard(cardId);
   }
 
   return (

@@ -1,5 +1,6 @@
 export type Offer = {
   id: string;
+  location: 'Paris' | 'Cologne' | 'Brussels' | 'Amsterdam' | 'Hamburg' | 'Dusseldorf';
   images: string[];
   title: string;
   description: string;

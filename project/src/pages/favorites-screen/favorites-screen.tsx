@@ -1,6 +1,12 @@
+// import { Offer } from '../../types/offer';
+import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
 
-function FavoritesScreen(): JSX.Element {
+type FavoriteScreenProp = {
+  offers: Offer[];
+}
+
+function FavoritesScreen({offers}: FavoriteScreenProp): JSX.Element {
   return (
     <div className="page">
       <Header />
