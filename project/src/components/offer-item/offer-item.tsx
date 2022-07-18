@@ -2,33 +2,37 @@ import { Offer } from '../../types/offer';
 
 type OfferItemProps = {
   offer: Offer;
-  onActivateCard: (offerId: string) => void;
-  key?: number;
+  pageName: string;
+  key: number;
+  onActivateCard?: (offerId: string) => void;
 };
 
 function OfferItem({
   offer,
   onActivateCard,
+  pageName,
   key,
 }: OfferItemProps): JSX.Element {
 
+  const classNamePrefix = pageName === 'main' ? 'cities' : 'favorites';
+
   function handleMouseOver(evt: React.MouseEvent<HTMLElement>): void {
     const cardId = evt.currentTarget.id;
-    onActivateCard(cardId);
+    onActivateCard && onActivateCard(cardId);
   }
 
   return (
     <article
-      className="cities__card place-card"
+      className={`${classNamePrefix}__card place-card`}
       id={offer.id.toString(10)}
-      onMouseOver={handleMouseOver}
+      onMouseOver={pageName === 'main' ? handleMouseOver : undefined}
     >
       {offer.isPremium ? (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       ) : null}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={`${classNamePrefix}__image-wrapper place-card__image-wrapper`}>
         <a href={`offer/${offer.id}`}>
           <img
             className="place-card__image"
@@ -39,7 +43,7 @@ function OfferItem({
           />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className={`place-card__info ${pageName === 'favorites' ? 'favorites__card-info' : null}`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>

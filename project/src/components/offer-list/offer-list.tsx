@@ -4,9 +4,10 @@ import OfferItem from '../offer-item/offer-item';
 
 type OfferListProp = {
   offers: Offer[];
+  pageName: string;
 };
 
-function OfferList({ offers }: OfferListProp): JSX.Element {
+function OfferList({ offers, pageName }: OfferListProp): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | undefined>();
 
   // eslint-disable-next-line no-console
@@ -19,7 +20,7 @@ function OfferList({ offers }: OfferListProp): JSX.Element {
   return (
     <>
       {offers.map((offer) => (
-        <OfferItem key={offer.id} offer={offer} onActivateCard={handleActivateCard} />
+        <OfferItem key={offer.id} offer={offer} pageName={pageName} onActivateCard={handleActivateCard} />
       ))}
     </>
   );

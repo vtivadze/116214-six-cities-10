@@ -1,6 +1,6 @@
 import { Offer } from './offer';
 
-export type Favorite = {
-  location: string,
-  offers: Offer[],
-};
+export interface Favorites {
+  [key: string]: Offer[];
+}
+

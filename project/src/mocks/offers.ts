@@ -40,7 +40,7 @@ export const offers: Offer[] = [
     previewImage: 'img/room.jpg',
     price: 120,
     rating: 1.4,
-    title: 'Property 1',
+    title: 'Property 1 in Amsterdam',
     type: 'apartment',
   },
   {
@@ -82,7 +82,7 @@ export const offers: Offer[] = [
     previewImage: 'img/apartment-01.jpg',
     price: 120,
     rating: 1.5,
-    title: 'Property 2',
+    title: 'Property 2 in Amsterdam',
     type: 'apartment',
   },
   {
@@ -124,7 +124,7 @@ export const offers: Offer[] = [
     previewImage: 'img/apartment-02.jpg',
     price: 120,
     rating: 4.8,
-    title: 'Property 3',
+    title: 'Property 3 in Hamburg',
     type: 'apartment',
   },
   {
@@ -166,7 +166,7 @@ export const offers: Offer[] = [
     previewImage: 'img/apartment-03.jpg',
     price: 120,
     rating: 4.8,
-    title: 'Property 4',
+    title: 'Property 4 in Brussels',
     type: 'apartment',
   },
 

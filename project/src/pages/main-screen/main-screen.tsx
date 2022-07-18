@@ -54,7 +54,7 @@ function MainScreen({ placeCount, offers }: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferList offers={offers} />
+                <OfferList offers={offers} pageName="main" />
               </div>
             </section>
             <div className="cities__right-section">
