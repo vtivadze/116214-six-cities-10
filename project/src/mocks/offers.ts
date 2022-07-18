@@ -93,7 +93,7 @@ export const offers: Offer[] = [
         longitude: 4.895168,
         zoom: 10,
       },
-      name: 'Amsterdam',
+      name: 'Hamburg',
     },
     description:
       'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
@@ -135,7 +135,7 @@ export const offers: Offer[] = [
         longitude: 4.895168,
         zoom: 10,
       },
-      name: 'Amsterdam',
+      name: 'Brussels',
     },
     description:
       'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam.',
