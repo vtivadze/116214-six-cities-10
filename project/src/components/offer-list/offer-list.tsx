@@ -8,8 +8,10 @@ type OfferListProp = {
 
 function OfferList({ offers }: OfferListProp): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | undefined>();
+
   // eslint-disable-next-line no-console
   console.log(activeCardId);
+
   function handleActivateCard(cardId: string) {
     setActiveCardId(cardId);
   }
