@@ -4,15 +4,13 @@ import { Offer } from '../../types/offer';
 type OfferItemProps = {
   offer: Offer;
   pageName: string;
-  key: number;
   onActivateCard?: (offerId: string) => void;
 };
 
 function OfferItem({
   offer,
   onActivateCard,
-  pageName,
-  key,
+  pageName
 }: OfferItemProps): JSX.Element {
 
   const classNamePrefix = pageName === 'main' ? 'cities' : 'favorites';

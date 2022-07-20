@@ -14,7 +14,7 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
   const id = params.id as string;
   const offer = offers.find((item: Offer) => item.id === +id) as Offer;
 
-  const reviewsFiltered = reviews
+  const reviewsToDisplay = [...reviews]
     .sort((a,b) => Date.parse(b.date) - Date.parse(a.date))
     .slice(0, 10);
 
@@ -29,7 +29,7 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
                 <div key={image} className="property__image-wrapper">
                   <img
                     className="property__image"
-                    src="img/room.jpg"
+                    src={image}
                     alt="Studio"
                   />
                 </div>
@@ -120,14 +120,14 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
                   <p className="property__text">{offer.description}</p>
                 </div>
               </div>
-              {reviewsFiltered.length > 0 && (
+              {reviews.length > 0 && (
                 <section className="property__reviews reviews">
                   <h2 className="reviews__title">
                     Reviews &middot;{' '}
                     <span className="reviews__amount">{reviews.length}</span>
                   </h2>
                   <ul className="reviews__list">
-                    {reviews.map((review) => (
+                    {reviewsToDisplay.map((review) => (
                       <li key={review.id} className="reviews__item">
                         <div className="reviews__user user">
                           <div className="reviews__avatar-wrapper user__avatar-wrapper">

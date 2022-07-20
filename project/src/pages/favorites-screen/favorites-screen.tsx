@@ -1,11 +1,14 @@
 import { Offer } from '../../types/offer';
-import { Favorites } from '../../types/favorite';
 import Header from '../../components/header/header';
 import OfferItem from '../../components/offer-item/offer-item';
 
 type FavoriteScreenProp = {
   offers: Offer[];
 };
+
+export interface Favorites {
+  [key: string]: Offer[];
+}
 
 function FavoritesScreen({ offers }: FavoriteScreenProp): JSX.Element {
   const favorites: Favorites = {};

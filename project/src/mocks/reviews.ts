@@ -7,7 +7,7 @@ export const reviews: Review[] = [
     author: 'Max',
     avatar: 'img/avatar-max.jpg',
     raiting: 1,
-    text: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
+    text: '1 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     date: 'April 2021',
   },
   {
@@ -16,7 +16,7 @@ export const reviews: Review[] = [
     author: 'John',
     avatar: 'img/avatar-max.jpg',
     raiting: 2,
-    text: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
+    text: '2 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     date: 'May 2019',
   },
   {
@@ -25,7 +25,7 @@ export const reviews: Review[] = [
     author: 'Peter',
     avatar: 'img/avatar-max.jpg',
     raiting: 3,
-    text: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
+    text: '3 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     date: 'June 2019',
   },
   {
@@ -34,7 +34,7 @@ export const reviews: Review[] = [
     author: 'Gabriel',
     avatar: 'img/avatar-max.jpg',
     raiting: 4,
-    text: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
+    text: '4 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     date: 'April 2018',
   },
   {
@@ -43,7 +43,7 @@ export const reviews: Review[] = [
     author: 'William',
     avatar: 'img/avatar-max.jpg',
     raiting: 5,
-    text: 'A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
+    text: '5 A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.',
     date: 'August 2020',
   }
 ];
