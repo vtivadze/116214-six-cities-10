@@ -6,7 +6,7 @@ import Header from '../../components/header/header';
 import { offers } from '../../mocks/offers';
 import CommentForm from '../../components/comment-form/comment-form';
 
-import {calculateRatingPercentage} from '../../utils';
+import { calculateRatingPercentage } from '../../utils';
 
 type OfferScreenProp = {
   reviews: Review[];
@@ -18,7 +18,7 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
   const offer = offers.find((item: Offer) => item.id === +id) as Offer;
 
   const reviewsToDisplay = [...reviews]
-    .sort((a,b) => Date.parse(b.date) - Date.parse(a.date))
+    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
     .slice(0, 10);
 
   return (
@@ -30,22 +30,18 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
             <div className="property__gallery">
               {offer.images.map((image: string) => (
                 <div key={image} className="property__image-wrapper">
-                  <img
-                    className="property__image"
-                    src={image}
-                    alt="Studio"
-                  />
+                  <img className="property__image" src={image} alt="Studio" />
                 </div>
               ))}
             </div>
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
-              {offer.isPremium ? (
+              {offer.isPremium && (
                 <div className="property__mark">
                   <span>Premium</span>
                 </div>
-              ) : null}
+              )}
 
               <div className="property__name-wrapper">
                 <h1 className="property__name">{offer.title}</h1>
@@ -66,7 +62,9 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
                   <span
-                    style={{ width: `${calculateRatingPercentage(offer.rating)}%` }}
+                    style={{
+                      width: `${calculateRatingPercentage(offer.rating)}%`,
+                    }}
                   >
                   </span>
                   <span className="visually-hidden">Rating</span>
@@ -142,18 +140,25 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
                               alt="Reviews avatar"
                             />
                           </div>
-                          <span className="reviews__user-name">{review.author}</span>
+                          <span className="reviews__user-name">
+                            {review.author}
+                          </span>
                         </div>
                         <div className="reviews__info">
                           <div className="reviews__rating rating">
                             <div className="reviews__stars rating__stars">
-                              <span style={{ width: `${calculateRatingPercentage(offer.rating)}%` }}></span>
+                              <span
+                                style={{
+                                  width: `${calculateRatingPercentage(
+                                    offer.rating
+                                  )}%`,
+                                }}
+                              >
+                              </span>
                               <span className="visually-hidden">Rating</span>
                             </div>
                           </div>
-                          <p className="reviews__text">
-                            {review.text}
-                          </p>
+                          <p className="reviews__text">{review.text}</p>
                           <time className="reviews__time" dateTime="2019-04-24">
                             {review.date}
                           </time>

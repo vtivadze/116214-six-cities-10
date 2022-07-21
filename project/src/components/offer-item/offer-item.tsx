@@ -42,13 +42,13 @@ function OfferItem({
           />
         </Link>
       </div>
-      <div className={`place-card__info ${pageName === 'favorites' ? 'favorites__card-info' : null}`}>
+      <div className={`place-card__info ${pageName === 'favorites' && 'favorites__card-info'}`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`${offer.isFavorite ? 'place-card__bookmark-button--active' : null} place-card__bookmark-button button`} type="button">
+          <button className={`${offer.isFavorite && 'place-card__bookmark-button--active'} place-card__bookmark-button button`} type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
