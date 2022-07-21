@@ -7,3 +7,10 @@ export enum AppRoute {
   Favorites = '/favorites',
   Offer = '/offer/:id',
 }
+
+export const CITY = {
+  title: 'Amsterdam',
+  lat: 52.36961548135118,
+  lng: 4.904384736819395,
+  zoom: 10,
+};

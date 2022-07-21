@@ -2,6 +2,7 @@ import leafleat from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { Offer } from '../../types/offer';
+import { CITY } from '../../constants';
 
 type MapProps = {
   offers: Offer[];
