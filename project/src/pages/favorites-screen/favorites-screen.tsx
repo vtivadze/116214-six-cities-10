@@ -2,14 +2,25 @@ import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
 import OfferItem from '../../components/offer-item/offer-item';
 
-import { groupFavoritesByCity } from '../../utils';
-
 type FavoriteScreenProp = {
   favoriteOffers: Offer[];
 };
 
 export interface Favorites {
   [key: string]: Offer[];
+}
+
+function groupFavoritesByCity (favoriteOffers: Offer[]) {
+  const favorites: Favorites = {};
+  favoriteOffers.forEach((offer) => {
+    const cityName = offer.city.name;
+    if (!favorites[cityName]) {
+      favorites[cityName] = [];
+    }
+    favorites[cityName].push(offer);
+  });
+  const cityFavorites = Object.entries(favorites);
+  return cityFavorites;
 }
 
 function FavoritesScreen({ favoriteOffers }: FavoriteScreenProp): JSX.Element {
