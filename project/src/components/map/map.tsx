@@ -1,3 +1,6 @@
+import leafleat from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
 import { Offer } from '../../types/offer';
 
 type MapProps = {
