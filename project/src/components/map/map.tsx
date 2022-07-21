@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import leafleat from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -9,8 +10,10 @@ type MapProps = {
 }
 
 function Map({offers}: MapProps): JSX.Element {
+  const mapRef = useRef(null);
+
   return (
-    <section className="cities__map map"></section>
+    <section className="cities__map map" ref={mapRef}></section>
   );
 }
 
