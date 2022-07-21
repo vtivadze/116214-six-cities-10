@@ -2,37 +2,30 @@ import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
 import OfferItem from '../../components/offer-item/offer-item';
 
+import { groupFavoritesByCity } from '../../utils';
+
 type FavoriteScreenProp = {
-  offers: Offer[];
+  favoriteOffers: Offer[];
 };
 
 export interface Favorites {
   [key: string]: Offer[];
 }
 
-function FavoritesScreen({ offers }: FavoriteScreenProp): JSX.Element {
-  const favorites: Favorites = {};
-  offers.forEach((offer) => {
-    const cityName = offer.city.name;
-    if (!favorites[cityName]) {
-      favorites[cityName] = [];
-    }
-    favorites[cityName].push(offer);
-  });
-  const favoritesData = Object.entries(favorites);
-  // eslint-disable-next-line no-console
-  console.log(favoritesData);
+function FavoritesScreen({ favoriteOffers }: FavoriteScreenProp): JSX.Element {
+  const cityFavorites = groupFavoritesByCity(favoriteOffers);
 
   return (
     <div className="page">
       <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
-          {offers.length > 0 ? (
+
+          {favoriteOffers.length > 0 ? (
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
-                {favoritesData.map(([cityName, favs]) => (
+                {cityFavorites.map(([cityName, favorites]) => (
                   <li key={cityName} className="favorites__locations-items">
                     <div className="favorites__locations locations locations--current">
                       <div className="locations__item">
@@ -42,8 +35,8 @@ function FavoritesScreen({ offers }: FavoriteScreenProp): JSX.Element {
                       </div>
                     </div>
                     <div className="favorites__places">
-                      {favs.map((fav) => (
-                        <OfferItem key={fav.id} offer={fav} pageName="favorites" />
+                      {favorites.map((favorite: Offer) => (
+                        <OfferItem key={favorite.id} offer={favorite} pageName="favorites" />
                       ))}
                     </div>
                   </li>
@@ -62,6 +55,7 @@ function FavoritesScreen({ offers }: FavoriteScreenProp): JSX.Element {
               </div>
             </section>
           )}
+
         </div>
       </main>
       <footer className="footer container">
