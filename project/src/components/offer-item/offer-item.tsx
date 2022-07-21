@@ -36,7 +36,7 @@ function OfferItem({
         </div>
       )}
       <div className={`${imageWrapperClassName} place-card__image-wrapper`}>
-        <Link to={`offer/${offer.id}`}>
+        <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
