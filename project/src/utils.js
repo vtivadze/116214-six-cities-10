@@ -10,3 +10,5 @@ export const groupFavoritesByCity = (favoriteOffers) => {
   const cityFavorites = Object.entries(favorites);
   return cityFavorites;
 };
+
+export const calculateRatingPercentage = (rating) => Math.round(rating) * 20;

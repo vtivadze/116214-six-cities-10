@@ -1,9 +1,12 @@
 import { useParams } from 'react-router-dom';
+
 import { Offer } from '../../types/offer';
 import { Review } from '../../types/review';
 import Header from '../../components/header/header';
 import { offers } from '../../mocks/offers';
 import CommentForm from '../../components/comment-form/comment-form';
+
+import {calculateRatingPercentage} from '../../utils';
 
 type OfferScreenProp = {
   reviews: Review[];
@@ -63,7 +66,7 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
                   <span
-                    style={{ width: `${Math.round(offer.rating) * 20}%` }}
+                    style={{ width: `${calculateRatingPercentage(offer.rating)}%` }}
                   >
                   </span>
                   <span className="visually-hidden">Rating</span>
@@ -144,7 +147,7 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
                         <div className="reviews__info">
                           <div className="reviews__rating rating">
                             <div className="reviews__stars rating__stars">
-                              <span style={{ width: `${Math.round(offer.rating) * 20}%` }}></span>
+                              <span style={{ width: `${calculateRatingPercentage(offer.rating)}%` }}></span>
                               <span className="visually-hidden">Rating</span>
                             </div>
                           </div>
