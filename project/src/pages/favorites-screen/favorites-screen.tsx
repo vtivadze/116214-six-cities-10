@@ -1,6 +1,6 @@
 import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
-import OfferItem from '../../components/offer-item/offer-item';
+import OfferItemFavorite from '../../components/offer-item/offer-item-favorite/offer-item-favorite';
 
 type FavoriteScreenProp = {
   favoriteOffers: Offer[];
@@ -10,7 +10,7 @@ export interface Favorites {
   [key: string]: Offer[];
 }
 
-function groupFavoritesByCity (favoriteOffers: Offer[]) {
+function groupFavoritesByCity(favoriteOffers: Offer[]) {
   const favorites: Favorites = {};
   favoriteOffers.forEach((offer) => {
     const cityName = offer.city.name;
@@ -31,7 +31,6 @@ function FavoritesScreen({ favoriteOffers }: FavoriteScreenProp): JSX.Element {
       <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
-
           {favoriteOffers.length > 0 ? (
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
@@ -47,7 +46,7 @@ function FavoritesScreen({ favoriteOffers }: FavoriteScreenProp): JSX.Element {
                     </div>
                     <div className="favorites__places">
                       {favorites.map((favorite: Offer) => (
-                        <OfferItem key={favorite.id} offer={favorite} pageName="favorites" />
+                        <OfferItemFavorite key={favorite.id} offer={favorite} />
                       ))}
                     </div>
                   </li>
@@ -66,7 +65,6 @@ function FavoritesScreen({ favoriteOffers }: FavoriteScreenProp): JSX.Element {
               </div>
             </section>
           )}
-
         </div>
       </main>
       <footer className="footer container">

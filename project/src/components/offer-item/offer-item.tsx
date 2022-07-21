@@ -4,17 +4,19 @@ import { calculateRatingPercentage } from '../../utils';
 
 type OfferItemProps = {
   offer: Offer;
-  pageName: string;
+  itemClassName: string;
+  imageWrapperClassName: string;
+  cardInfoClassName?: string;
   onActivateCard?: (offerId: string) => void;
 };
 
 function OfferItem({
   offer,
+  itemClassName,
+  imageWrapperClassName,
+  cardInfoClassName,
   onActivateCard,
-  pageName
 }: OfferItemProps): JSX.Element {
-
-  const classNamePrefix = pageName === 'main' ? 'cities' : 'favorites';
 
   function handleMouseOver(evt: React.MouseEvent<HTMLElement>): void {
     onActivateCard && onActivateCard(offer.id.toString());
@@ -22,16 +24,16 @@ function OfferItem({
 
   return (
     <article
-      className={`${classNamePrefix}__card place-card`}
+      className={`${itemClassName} place-card`}
       id={offer.id.toString(10)}
-      onMouseOver={pageName === 'main' ? handleMouseOver : undefined}
+      onMouseOver={onActivateCard && handleMouseOver}
     >
       {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className={`${classNamePrefix}__image-wrapper place-card__image-wrapper`}>
+      <div className={`${imageWrapperClassName} place-card__image-wrapper`}>
         <Link to={`offer/${offer.id}`}>
           <img
             className="place-card__image"
@@ -42,13 +44,18 @@ function OfferItem({
           />
         </Link>
       </div>
-      <div className={`place-card__info ${pageName === 'favorites' && 'favorites__card-info'}`}>
+      <div className={`place-card__info ${cardInfoClassName}`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`${offer.isFavorite && 'place-card__bookmark-button--active'} place-card__bookmark-button button`} type="button">
+          <button
+            className={`${
+              offer.isFavorite && 'place-card__bookmark-button--active'
+            } place-card__bookmark-button button`}
+            type="button"
+          >
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
@@ -57,7 +64,10 @@ function OfferItem({
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
-            <span style={{ width: `${calculateRatingPercentage(offer.rating)}%` }}></span>
+            <span
+              style={{ width: `${calculateRatingPercentage(offer.rating)}%` }}
+            >
+            </span>
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
