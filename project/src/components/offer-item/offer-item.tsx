@@ -16,8 +16,7 @@ function OfferItem({
   const classNamePrefix = pageName === 'main' ? 'cities' : 'favorites';
 
   function handleMouseOver(evt: React.MouseEvent<HTMLElement>): void {
-    const cardId = evt.currentTarget.id;
-    onActivateCard && onActivateCard(cardId);
+    onActivateCard && onActivateCard(offer.id.toString());
   }
 
   return (
