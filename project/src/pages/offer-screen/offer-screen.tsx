@@ -5,9 +5,9 @@ import { Review } from '../../types/review';
 import Header from '../../components/header/header';
 import { offers } from '../../mocks/offers';
 import CommentForm from '../../components/comment-form/comment-form';
+import OfferItemNearPlace from '../../components/offer-item-near-place/offer-item-near-place';
 
 import { calculateRatingPercentage } from '../../utils';
-import OfferItemNearPlaces from '../../components/offer-item-near-places/offer-item-near-places';
 
 type OfferScreenProp = {
   reviews: Review[];
@@ -183,7 +183,7 @@ function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
             </h2>
             <div className="near-places__list places__list">
               {nearPlaces.map((nearPlace) => (
-                <OfferItemNearPlaces key={nearPlace.id} offer={nearPlace} />
+                <OfferItemNearPlace key={nearPlace.id} offer={nearPlace} />
               ))}
             </div>
           </section>
