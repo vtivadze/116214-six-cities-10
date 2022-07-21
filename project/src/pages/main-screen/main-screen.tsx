@@ -4,6 +4,7 @@ import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
 import OfferItemMain from '../../components/offer-item-main/offer-item-main';
 import LocationList from '../../components/location-list/location-list';
+import Map from '../../components/map/map';
 
 type MainScreenProps = {
   placeCount: number;
@@ -74,7 +75,7 @@ function MainScreen({ placeCount, offers }: MainScreenProps): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map offers={offers} />
             </div>
           </div>
         </div>
