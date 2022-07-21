@@ -16,8 +16,7 @@ function OfferItem({
   const classNamePrefix = pageName === 'main' ? 'cities' : 'favorites';
 
   function handleMouseOver(evt: React.MouseEvent<HTMLElement>): void {
-    const cardId = evt.currentTarget.id;
-    onActivateCard && onActivateCard(cardId);
+    onActivateCard && onActivateCard(offer.id.toString());
   }
 
   return (
@@ -26,11 +25,11 @@ function OfferItem({
       id={offer.id.toString(10)}
       onMouseOver={pageName === 'main' ? handleMouseOver : undefined}
     >
-      {offer.isPremium ? (
+      {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
-      ) : null}
+      )}
       <div className={`${classNamePrefix}__image-wrapper place-card__image-wrapper`}>
         <Link to={`offer/${offer.id}`}>
           <img
