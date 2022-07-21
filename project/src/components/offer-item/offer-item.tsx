@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
+
 import { Offer } from '../../types/offer';
+
 import { calculateRatingPercentage } from '../../utils';
 
 type OfferItemProps = {

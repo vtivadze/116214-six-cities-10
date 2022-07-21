@@ -1,6 +1,6 @@
 import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
-import OfferItemFavorite from '../../components/offer-item/offer-item-favorite/offer-item-favorite';
+import OfferItemFavorite from '../../components/offer-item-favorite/offer-item-favorite';
 
 type FavoriteScreenProp = {
   favoriteOffers: Offer[];

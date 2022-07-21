@@ -1,5 +1,5 @@
-import { Offer } from '../../../types/offer';
-import OfferItem from '../offer-item';
+import { Offer } from '../../types/offer';
+import OfferItem from '../offer-item/offer-item';
 
 type OfferItemMainProps = {
   offer: Offer;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Offer } from '../../types/offer';
 import Header from '../../components/header/header';
-import OfferItemMain from '../../components/offer-item/offer-item-main/offer-item-main';
+import OfferItemMain from '../../components/offer-item-main/offer-item-main';
 import LocationList from '../../components/location-list/location-list';
 
 type MainScreenProps = {
