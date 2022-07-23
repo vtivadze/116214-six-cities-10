@@ -8,6 +8,12 @@ import useMap from '../../hooks/useMap';
 
 import { URL_MARKER_DEFAULT } from '../../constants';
 
+const defaultCustomIcon = leaflet.icon({
+  iconUrl: URL_MARKER_DEFAULT,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
 type MapProps = {
   offers: Offer[];
 };
@@ -15,12 +21,6 @@ type MapProps = {
 function Map({ offers }: MapProps): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, CITY);
-
-  const defaultCustomIcon = leaflet.icon({
-    iconUrl: URL_MARKER_DEFAULT,
-    iconSize: [40, 40],
-    iconAnchor: [20, 40],
-  });
 
   useEffect(() => {
     if (map) {
