@@ -1,28 +1,27 @@
 import { Offer } from '../../types/offer';
+
+import { offers } from '../../mocks/offers';
+
 import Header from '../../components/header/header';
 import OfferItem from '../../components/offer-item/offer-item';
-
-type FavoriteScreenProp = {
-  offers: Offer[];
-};
 
 export interface Favorites {
   [key: string]: Offer[];
 }
 
-function FavoritesScreen({ offers }: FavoriteScreenProp): JSX.Element {
+function groupFavoritesByCity(favoriteOffers: Offer[]) {
   const favorites: Favorites = {};
-  offers.forEach((offer) => {
+  favoriteOffers.forEach((offer) => {
     const cityName = offer.city.name;
     if (!favorites[cityName]) {
       favorites[cityName] = [];
     }
     favorites[cityName].push(offer);
   });
-  const favoritesData = Object.entries(favorites);
-  // eslint-disable-next-line no-console
-  console.log(favoritesData);
+  return Object.entries(favorites);
+}
 
+function FavoritesScreen(): JSX.Element {
   return (
     <div className="page">
       <Header />
@@ -32,7 +31,7 @@ function FavoritesScreen({ offers }: FavoriteScreenProp): JSX.Element {
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
-                {favoritesData.map(([cityName, favs]) => (
+                {groupFavoritesByCity(offers).map(([cityName, favorites]) => (
                   <li key={cityName} className="favorites__locations-items">
                     <div className="favorites__locations locations locations--current">
                       <div className="locations__item">
@@ -42,8 +41,14 @@ function FavoritesScreen({ offers }: FavoriteScreenProp): JSX.Element {
                       </div>
                     </div>
                     <div className="favorites__places">
-                      {favs.map((fav) => (
-                        <OfferItem key={fav.id} offer={fav} pageName="favorites" />
+                      {favorites.map((favorite: Offer) => (
+                        <OfferItem
+                          key={favorite.id}
+                          offer={favorite}
+                          itemClassName="favorites__card"
+                          imageWrapperClassName="favorites__image-wrapper"
+                          cardInfoClassName="favorites__card-info"
+                        />
                       ))}
                     </div>
                   </li>

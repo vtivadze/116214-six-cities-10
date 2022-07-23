@@ -1,14 +1,22 @@
-import {Offer} from '../../types/offer';
+import { useState } from 'react';
+
+import { offers } from '../../mocks/offers';
+import { PLACE_COUNT } from '../../constants';
+
 import Header from '../../components/header/header';
-import OfferList from '../../components/offer-list/offer-list';
+import OfferItem from '../../components/offer-item/offer-item';
 import LocationList from '../../components/location-list/location-list';
+import Map from '../../components/map/map';
 
-type MainScreenProps = {
-  placeCount: number;
-  offers: Offer[];
-};
+function MainScreen(): JSX.Element {
+  const [activeCardId, setActiveCardId] = useState<string | undefined>();
+  // eslint-disable-next-line no-console
+  console.log(activeCardId);
 
-function MainScreen({ placeCount, offers }: MainScreenProps): JSX.Element {
+  const handleActivateCard = (cardId: string) => {
+    setActiveCardId(cardId);
+  };
+
   return (
     <div className="page page--gray page--main">
       <Header />
@@ -25,7 +33,7 @@ function MainScreen({ placeCount, offers }: MainScreenProps): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {placeCount} places to stay in Amsterdam
+                {PLACE_COUNT} places to stay in Amsterdam
               </b>
               <form className="places__sorting" action="/" method="get">
                 <span className="places__sorting-caption">Sort by</span>
@@ -54,11 +62,19 @@ function MainScreen({ placeCount, offers }: MainScreenProps): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                <OfferList offers={offers} pageName="main" />
+                {offers.map((offer) => (
+                  <OfferItem
+                    key={offer.id}
+                    offer={offer}
+                    itemClassName="cities__card"
+                    imageWrapperClassName="cities__image-wrapper"
+                    onActivateCard={handleActivateCard}
+                  />
+                ))}
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <Map offers={offers} />
             </div>
           </div>
         </div>

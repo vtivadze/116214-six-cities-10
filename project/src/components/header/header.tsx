@@ -18,7 +18,7 @@ function Header(): JSX.Element {
               />
             </a>
           </div>
-          {isLogin ? <Nav /> : null}
+          {isLogin && <Nav />}
         </div>
       </div>
     </header>
