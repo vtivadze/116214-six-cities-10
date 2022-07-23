@@ -10,7 +10,7 @@ export enum AppRoute {
   Offer = '/offer/:id',
 }
 
-export const city = {
+export const defaultCity = {
   title: 'Amsterdam',
   lat: 52.36961548135118,
   lng: 4.904384736819395,
