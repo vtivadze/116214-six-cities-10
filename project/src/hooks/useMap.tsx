@@ -2,14 +2,14 @@ import {MutableRefObject, useEffect, useState, useRef} from 'react';
 import leaflet from 'leaflet';
 import {Map} from 'leaflet';
 
-type City = {
-  title: string;
+import {ZOOM_LEVEL} from '../constants';
+
+type Coordinates = {
   lat: number;
   lng: number;
-  zoom: number;
 }
 
-function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: City): Map | null {
+function useMap(mapRef: MutableRefObject<HTMLElement | null>, initialCoordinates: Coordinates): Map | null {
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
 
@@ -17,10 +17,10 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: City): Map |
     if (mapRef.current !== null && !isRenderedRef.current) {
       const instance = leaflet.map(mapRef.current, {
         center: {
-          lat: city.lat,
-          lng: city.lng,
+          lat: initialCoordinates.lat,
+          lng: initialCoordinates.lng,
         },
-        zoom: city.zoom,
+        zoom: ZOOM_LEVEL,
       });
 
       leaflet
@@ -35,7 +35,7 @@ function useMap(mapRef: MutableRefObject<HTMLElement | null>, city: City): Map |
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, city]);
+  }, [mapRef, initialCoordinates]);
 
   return map;
 }

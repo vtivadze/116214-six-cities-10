@@ -3,7 +3,7 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { Offer } from '../../types/offer';
-import { defaultCity } from '../../constants';
+import { initialCoordinates } from '../../constants';
 import useMap from '../../hooks/useMap';
 
 import { URL_MARKER_DEFAULT } from '../../constants';
@@ -20,7 +20,7 @@ type MapProps = {
 
 function Map({ offers }: MapProps): JSX.Element {
   const mapRef = useRef(null);
-  const map = useMap(mapRef, defaultCity);
+  const map = useMap(mapRef, initialCoordinates);
 
   useEffect(() => {
     if (map) {
