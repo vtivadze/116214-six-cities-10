@@ -27,7 +27,6 @@ function OfferItem({
   return (
     <article
       className={`${itemClassName} place-card`}
-      id={offer.id.toString(10)}
       onMouseOver={onActivateCard && handleMouseOver}
     >
       {offer.isPremium && (
