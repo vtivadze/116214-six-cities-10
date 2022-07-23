@@ -1,10 +1,9 @@
 import { Offer } from '../../types/offer';
+
+import { offers } from '../../mocks/offers';
+
 import Header from '../../components/header/header';
 import OfferItemFavorite from '../../components/offer-item-favorite/offer-item-favorite';
-
-type FavoriteScreenProp = {
-  favoriteOffers: Offer[];
-};
 
 export interface Favorites {
   [key: string]: Offer[];
@@ -23,15 +22,15 @@ function groupFavoritesByCity(favoriteOffers: Offer[]) {
   return cityFavorites;
 }
 
-function FavoritesScreen({ favoriteOffers }: FavoriteScreenProp): JSX.Element {
-  const cityFavorites = groupFavoritesByCity(favoriteOffers);
+function FavoritesScreen(): JSX.Element {
+  const cityFavorites = groupFavoritesByCity(offers);
 
   return (
     <div className="page">
       <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
-          {favoriteOffers.length > 0 ? (
+          {offers.length > 0 ? (
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">

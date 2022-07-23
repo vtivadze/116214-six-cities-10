@@ -1,19 +1,17 @@
 import { useParams } from 'react-router-dom';
 
 import { Offer } from '../../types/offer';
-import { Review } from '../../types/review';
-import Header from '../../components/header/header';
+
 import { offers } from '../../mocks/offers';
+import { reviews } from '../../mocks/reviews';
+
+import Header from '../../components/header/header';
 import CommentForm from '../../components/comment-form/comment-form';
 import OfferItemNearPlace from '../../components/offer-item-near-place/offer-item-near-place';
 
 import { calculateRatingPercentage } from '../../utils';
 
-type OfferScreenProp = {
-  reviews: Review[];
-};
-
-function OfferScreen({ reviews }: OfferScreenProp): JSX.Element {
+function OfferScreen(): JSX.Element {
   const params = useParams();
   const id = params.id as string;
   const offer = offers.find((item: Offer) => item.id === +id) as Offer;

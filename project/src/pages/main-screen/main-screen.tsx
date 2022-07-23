@@ -1,17 +1,14 @@
 import { useState } from 'react';
 
-import { Offer } from '../../types/offer';
+import { offers } from '../../mocks/offers';
+import { PLACE_COUNT } from '../../constants';
+
 import Header from '../../components/header/header';
 import OfferItemMain from '../../components/offer-item-main/offer-item-main';
 import LocationList from '../../components/location-list/location-list';
 import Map from '../../components/map/map';
 
-type MainScreenProps = {
-  placeCount: number;
-  offers: Offer[];
-};
-
-function MainScreen({ placeCount, offers }: MainScreenProps): JSX.Element {
+function MainScreen(): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | undefined>();
   // eslint-disable-next-line no-console
   console.log(activeCardId);
@@ -36,7 +33,7 @@ function MainScreen({ placeCount, offers }: MainScreenProps): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {placeCount} places to stay in Amsterdam
+                {PLACE_COUNT} places to stay in Amsterdam
               </b>
               <form className="places__sorting" action="/" method="get">
                 <span className="places__sorting-caption">Sort by</span>
