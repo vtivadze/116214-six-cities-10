@@ -20,9 +20,9 @@ function OfferItem({
   onActivateCard,
 }: Props): JSX.Element {
 
-  function handleMouseOver(evt: React.MouseEvent<HTMLElement>): void {
+  const handleMouseOver = () => {
     onActivateCard && onActivateCard(offer.id.toString());
-  }
+  };
 
   return (
     <article
