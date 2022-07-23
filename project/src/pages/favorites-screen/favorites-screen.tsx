@@ -3,7 +3,7 @@ import { Offer } from '../../types/offer';
 import { offers } from '../../mocks/offers';
 
 import Header from '../../components/header/header';
-import OfferItemFavorite from '../../components/offer-item-favorite/offer-item-favorite';
+import OfferItem from '../../components/offer-item/offer-item';
 
 export interface Favorites {
   [key: string]: Offer[];
@@ -42,7 +42,13 @@ function FavoritesScreen(): JSX.Element {
                     </div>
                     <div className="favorites__places">
                       {favorites.map((favorite: Offer) => (
-                        <OfferItemFavorite key={favorite.id} offer={favorite} />
+                        <OfferItem
+                          key={favorite.id}
+                          offer={favorite}
+                          itemClassName="favorites__card"
+                          imageWrapperClassName="favorites__image-wrapper"
+                          cardInfoClassName="favorites__card-info"
+                        />
                       ))}
                     </div>
                   </li>

@@ -7,7 +7,7 @@ import { reviews } from '../../mocks/reviews';
 
 import Header from '../../components/header/header';
 import CommentForm from '../../components/comment-form/comment-form';
-import OfferItemNearPlace from '../../components/offer-item-near-place/offer-item-near-place';
+import OfferItem from '../../components/offer-item/offer-item';
 
 import { calculateRatingPercentage } from '../../utils';
 
@@ -181,7 +181,12 @@ function OfferScreen(): JSX.Element {
             </h2>
             <div className="near-places__list places__list">
               {nearPlaces.map((nearPlace) => (
-                <OfferItemNearPlace key={nearPlace.id} offer={nearPlace} />
+                <OfferItem
+                  key={nearPlace.id}
+                  offer={nearPlace}
+                  itemClassName="near-places__card"
+                  imageWrapperClassName="near-places__image-wrapper"
+                />
               ))}
             </div>
           </section>

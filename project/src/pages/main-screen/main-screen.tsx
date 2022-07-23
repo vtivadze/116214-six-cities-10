@@ -4,7 +4,7 @@ import { offers } from '../../mocks/offers';
 import { PLACE_COUNT } from '../../constants';
 
 import Header from '../../components/header/header';
-import OfferItemMain from '../../components/offer-item-main/offer-item-main';
+import OfferItem from '../../components/offer-item/offer-item';
 import LocationList from '../../components/location-list/location-list';
 import Map from '../../components/map/map';
 
@@ -13,9 +13,9 @@ function MainScreen(): JSX.Element {
   // eslint-disable-next-line no-console
   console.log(activeCardId);
 
-  function handleActivateCard(cardId: string) {
+  const handleActivateCard = (cardId: string) => {
     setActiveCardId(cardId);
-  }
+  };
 
   return (
     <div className="page page--gray page--main">
@@ -63,10 +63,12 @@ function MainScreen(): JSX.Element {
               </form>
               <div className="cities__places-list places__list tabs__content">
                 {offers.map((offer) => (
-                  <OfferItemMain
+                  <OfferItem
                     key={offer.id}
                     offer={offer}
-                    handleActivateCard={handleActivateCard}
+                    itemClassName="cities__card"
+                    imageWrapperClassName="cities__image-wrapper"
+                    onActivateCard={handleActivateCard}
                   />
                 ))}
               </div>

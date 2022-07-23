@@ -27,7 +27,7 @@ function OfferItem({
   return (
     <article
       className={`${itemClassName} place-card`}
-      onMouseOver={onActivateCard && handleMouseOver}
+      onMouseOver={handleMouseOver}
     >
       {offer.isPremium && (
         <div className="place-card__mark">
