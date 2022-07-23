@@ -1,11 +1,11 @@
 import { Offer } from '../../types/offer';
 import OfferItem from '../offer-item/offer-item';
 
-type OfferItemFavoriteProps = {
+type Props = {
   offer: Offer;
 };
 
-function OfferItemFavorite({ offer }: OfferItemFavoriteProps): JSX.Element {
+function OfferItemFavorite({ offer }: Props): JSX.Element {
   return (
     <OfferItem
       offer={offer}

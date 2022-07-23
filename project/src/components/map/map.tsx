@@ -14,11 +14,11 @@ const defaultIcon = leaflet.icon({
   iconAnchor: [20, 40],
 });
 
-type MapProps = {
+type Props = {
   offers: Offer[];
 };
 
-function Map({ offers }: MapProps): JSX.Element {
+function Map({ offers }: Props): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, initialCoordinates);
 

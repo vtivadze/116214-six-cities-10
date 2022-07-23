@@ -4,7 +4,7 @@ import { Offer } from '../../types/offer';
 
 import { calculateRatingPercentage } from '../../utils';
 
-type OfferItemProps = {
+type Props = {
   offer: Offer;
   itemClassName: string;
   imageWrapperClassName: string;
@@ -18,7 +18,7 @@ function OfferItem({
   imageWrapperClassName,
   cardInfoClassName,
   onActivateCard,
-}: OfferItemProps): JSX.Element {
+}: Props): JSX.Element {
 
   function handleMouseOver(evt: React.MouseEvent<HTMLElement>): void {
     onActivateCard && onActivateCard(offer.id.toString());
