@@ -18,13 +18,10 @@ function groupFavoritesByCity(favoriteOffers: Offer[]) {
     }
     favorites[cityName].push(offer);
   });
-  const cityFavorites = Object.entries(favorites);
-  return cityFavorites;
+  return Object.entries(favorites);
 }
 
 function FavoritesScreen(): JSX.Element {
-  const cityFavorites = groupFavoritesByCity(offers);
-
   return (
     <div className="page">
       <Header />
@@ -34,7 +31,7 @@ function FavoritesScreen(): JSX.Element {
             <section className="favorites">
               <h1 className="favorites__title">Saved listing</h1>
               <ul className="favorites__list">
-                {cityFavorites.map(([cityName, favorites]) => (
+                {groupFavoritesByCity(offers).map(([cityName, favorites]) => (
                   <li key={cityName} className="favorites__locations-items">
                     <div className="favorites__locations locations locations--current">
                       <div className="locations__item">
