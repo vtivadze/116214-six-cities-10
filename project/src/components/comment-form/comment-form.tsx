@@ -29,7 +29,7 @@ function CommentForm(): JSX.Element {
             <input
               className="form__rating-input visually-hidden"
               name="rating"
-              value={i}
+              defaultValue={i}
               id={`${i}-stars`}
               type="radio"
             />
@@ -50,7 +50,7 @@ function CommentForm(): JSX.Element {
         id="review"
         name="review"
         placeholder="Tell how was your stay, what you like and what can be improved"
-        value={formData.review}
+        defaultValue={formData.review}
       >
       </textarea>
       <div className="reviews__button-wrapper">
