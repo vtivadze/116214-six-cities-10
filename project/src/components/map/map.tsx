@@ -40,7 +40,7 @@ function Map({ offers }: MapProps): JSX.Element {
     }
   }, [map, offers ]);
 
-  return <section className="cities__map map" ref={mapRef}></section>;
+  return <section className="cities__map map" ref={mapRef} />;
 }
 
 export default Map;
