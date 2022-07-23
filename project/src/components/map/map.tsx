@@ -8,7 +8,7 @@ import useMap from '../../hooks/useMap';
 
 import { URL_MARKER_DEFAULT } from '../../constants';
 
-const defaultCustomIcon = leaflet.icon({
+const defaultIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
   iconSize: [40, 40],
   iconAnchor: [20, 40],
@@ -32,13 +32,13 @@ function Map({ offers }: MapProps): JSX.Element {
               lng: offer.city.location.longitude,
             },
             {
-              icon: defaultCustomIcon,
+              icon: defaultIcon,
             }
           )
           .addTo(map);
       });
     }
-  }, [map, offers, defaultCustomIcon]);
+  }, [map, offers ]);
 
   return <section className="cities__map map" ref={mapRef}></section>;
 }
