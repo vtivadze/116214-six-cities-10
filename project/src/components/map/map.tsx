@@ -3,9 +3,9 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { Offer } from '../../types/offer';
-import { initialCoordinates } from '../../constants';
 import useMap from '../../hooks/useMap';
 
+import { initialCoordinates } from '../../constants';
 import { URL_MARKER_DEFAULT } from '../../constants';
 
 const defaultIcon = leaflet.icon({
@@ -16,9 +16,10 @@ const defaultIcon = leaflet.icon({
 
 type Props = {
   offers: Offer[];
+  mapClassName: string;
 };
 
-function Map({ offers }: Props): JSX.Element {
+function Map({ offers, mapClassName }: Props): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef, initialCoordinates);
 
@@ -38,9 +39,14 @@ function Map({ offers }: Props): JSX.Element {
           .addTo(map);
       });
     }
-  }, [map, offers ]);
+  }, [map, offers]);
 
-  return <section className="cities__map map" ref={mapRef} />;
+  return (
+    <section
+      className={`${mapClassName} map`}
+      ref={mapRef}
+    />
+  );
 }
 
 export default Map;

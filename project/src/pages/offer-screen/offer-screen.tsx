@@ -8,8 +8,13 @@ import { reviews } from '../../mocks/reviews';
 import Header from '../../components/header/header';
 import CommentForm from '../../components/comment-form/comment-form';
 import OfferItem from '../../components/offer-item/offer-item';
+import ReviewItem from '../../components/review-item/review-item';
+import Map from '../../components/map/map';
 
 import { calculateRatingPercentage } from '../../utils';
+
+const REVIEWS_COUNT = 10;
+const NEAR_PLACES_COUNT = 3;
 
 function OfferScreen(): JSX.Element {
   const params = useParams();
@@ -18,9 +23,11 @@ function OfferScreen(): JSX.Element {
 
   const reviewsToDisplay = [...reviews]
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-    .slice(0, 10);
+    .slice(0, REVIEWS_COUNT);
 
-  const nearPlaces = offers.slice(0, 3);
+  const nearPlaces = offers
+    .filter((item) => item.id !== +id)
+    .slice(0, NEAR_PLACES_COUNT);
 
   return (
     <div className="page">
@@ -122,57 +129,27 @@ function OfferScreen(): JSX.Element {
                   <p className="property__text">{offer.description}</p>
                 </div>
               </div>
-              {reviews.length > 0 && (
-                <section className="property__reviews reviews">
-                  <h2 className="reviews__title">
-                    Reviews &middot;{' '}
-                    <span className="reviews__amount">{reviews.length}</span>
-                  </h2>
+              <section className="property__reviews reviews">
+                <h2 className="reviews__title">
+                  Reviews &middot;{' '}
+                  <span className="reviews__amount">{reviews.length}</span>
+                </h2>
+                {reviews.length > 0 && (
                   <ul className="reviews__list">
                     {reviewsToDisplay.map((review) => (
-                      <li key={review.id} className="reviews__item">
-                        <div className="reviews__user user">
-                          <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                            <img
-                              className="reviews__avatar user__avatar"
-                              src={review.avatar}
-                              width="54"
-                              height="54"
-                              alt="Reviews avatar"
-                            />
-                          </div>
-                          <span className="reviews__user-name">
-                            {review.author}
-                          </span>
-                        </div>
-                        <div className="reviews__info">
-                          <div className="reviews__rating rating">
-                            <div className="reviews__stars rating__stars">
-                              <span
-                                style={{
-                                  width: `${calculateRatingPercentage(
-                                    offer.rating
-                                  )}%`,
-                                }}
-                              >
-                              </span>
-                              <span className="visually-hidden">Rating</span>
-                            </div>
-                          </div>
-                          <p className="reviews__text">{review.text}</p>
-                          <time className="reviews__time" dateTime="2019-04-24">
-                            {review.date}
-                          </time>
-                        </div>
-                      </li>
+                      <ReviewItem
+                        key={review.id}
+                        review={review}
+                        offer={offer}
+                      />
                     ))}
                   </ul>
-                  <CommentForm />
-                </section>
-              )}
+                )}
+                <CommentForm />
+              </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map offers={nearPlaces} mapClassName="property__map" />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -180,10 +157,10 @@ function OfferScreen(): JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              {nearPlaces.map((nearPlace) => (
+              {nearPlaces.map((item) => (
                 <OfferItem
-                  key={nearPlace.id}
-                  offer={nearPlace}
+                  key={item.id}
+                  offer={item}
                   itemClassName="near-places__card"
                   imageWrapperClassName="near-places__image-wrapper"
                 />
