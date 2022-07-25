@@ -12,6 +12,9 @@ import ReviewItem from '../../components/review-item/review-item';
 
 import { calculateRatingPercentage } from '../../utils';
 
+const REVIEWS_COUNT = 10;
+const NEAR_PLACES_COUNT = 3;
+
 function OfferScreen(): JSX.Element {
   const params = useParams();
   const id = params.id as string;
@@ -19,9 +22,7 @@ function OfferScreen(): JSX.Element {
 
   const reviewsToDisplay = [...reviews]
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
-    .slice(0, 10);
-
-  const nearPlaces = offers.slice(0, 3);
+    .slice(0, REVIEWS_COUNT);
 
   return (
     <div className="page">
@@ -151,7 +152,7 @@ function OfferScreen(): JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              {nearPlaces.map((nearPlace) => (
+              {offers.slice(0, NEAR_PLACES_COUNT).map((nearPlace) => (
                 <OfferItem
                   key={nearPlace.id}
                   offer={nearPlace}
