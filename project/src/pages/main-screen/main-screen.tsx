@@ -74,7 +74,7 @@ function MainScreen(): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} />
+              <Map offers={offers} mapClassName="cities__map" />
             </div>
           </div>
         </div>
