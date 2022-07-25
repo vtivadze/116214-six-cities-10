@@ -9,6 +9,7 @@ import Header from '../../components/header/header';
 import CommentForm from '../../components/comment-form/comment-form';
 import OfferItem from '../../components/offer-item/offer-item';
 import ReviewItem from '../../components/review-item/review-item';
+import Map from '../../components/map/map';
 
 import { calculateRatingPercentage } from '../../utils';
 
@@ -23,6 +24,10 @@ function OfferScreen(): JSX.Element {
   const reviewsToDisplay = [...reviews]
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
     .slice(0, REVIEWS_COUNT);
+
+  const nearPlaces = offers
+    .filter((item) => item.id !== +id)
+    .slice(0, NEAR_PLACES_COUNT);
 
   return (
     <div className="page">
@@ -144,7 +149,7 @@ function OfferScreen(): JSX.Element {
               </section>
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map offers={nearPlaces} mapClassName="property__map" />
         </section>
         <div className="container">
           <section className="near-places places">
@@ -152,10 +157,10 @@ function OfferScreen(): JSX.Element {
               Other places in the neighbourhood
             </h2>
             <div className="near-places__list places__list">
-              {offers.slice(0, NEAR_PLACES_COUNT).map((nearPlace) => (
+              {nearPlaces.map((item) => (
                 <OfferItem
-                  key={nearPlace.id}
-                  offer={nearPlace}
+                  key={item.id}
+                  offer={item}
                   itemClassName="near-places__card"
                   imageWrapperClassName="near-places__image-wrapper"
                 />

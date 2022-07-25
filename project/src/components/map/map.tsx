@@ -39,9 +39,14 @@ function Map({ offers, mapClassName }: Props): JSX.Element {
           .addTo(map);
       });
     }
-  }, [map, offers ]);
+  }, [map, offers]);
 
-  return <section className={`${mapClassName} map`} ref={mapRef} />;
+  return (
+    <section
+      className={`${mapClassName} map`}
+      ref={mapRef}
+    />
+  );
 }
 
 export default Map;
