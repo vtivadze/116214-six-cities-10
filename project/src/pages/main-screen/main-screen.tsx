@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
 import { offers } from '../../mocks/offers';
-import { PLACE_COUNT } from '../../constants';
+import { PLACE_COUNT, cities } from '../../constants';
 
 import Header from '../../components/header/header';
 import OfferItem from '../../components/offer-item/offer-item';
-import LocationList from '../../components/location-list/location-list';
+import CityList from '../../components/city-list/city-list';
 import Map from '../../components/map/map';
 
 function MainScreen(): JSX.Element {
@@ -24,7 +24,7 @@ function MainScreen(): JSX.Element {
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <section className="locations container">
-            <LocationList />
+            <CityList cities={cities} />
           </section>
         </div>
 
