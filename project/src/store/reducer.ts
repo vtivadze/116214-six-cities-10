@@ -1,12 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 import { offers } from '../mocks/offers';
-import { initialCoordinates } from '../constants';
+import { changeCity, getOffers } from './action';
 
-const city = {
-  name: 'Amsterdam',
-  ...initialCoordinates,
-};
+const city = 'Amsterdam';
 
 const initialState = {
   city,
@@ -14,5 +11,11 @@ const initialState = {
 };
 
 export const updateStore = createReducer(initialState, (builder) => {
-
+  builder
+    .addCase(changeCity, (state, action) => {
+      state.city = action.payload;
+    })
+    .addCase(getOffers, (state, action) => {
+      state.offers = offers.filter((offer) => offer.city.name === action.payload);
+    });
 });
