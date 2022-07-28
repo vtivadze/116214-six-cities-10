@@ -1,16 +1,34 @@
-import { City } from '../../types/city';
+import { MouseEvent } from 'react';
+
+import { useAppSelector, useAppDispatch } from '../../hooks';
+import { changeCity } from '../../store/action';
 
 type Prop = {
-  cities: City[];
+  cities: string[];
 };
 
 function CityList({ cities }: Prop): JSX.Element {
+  const activeCity = useAppSelector((state) => state.city);
+  const dispatch = useAppDispatch();
+
+  const clickHandler = (event: MouseEvent) => {
+    event.preventDefault();
+    const city = event.currentTarget.getElementsByTagName('SPAN')[0].textContent;
+    dispatch(changeCity(city));
+  };
+
   return (
     <ul className="locations__list tabs__list">
       {cities.map((city) => (
-        <li key={city.name} className="locations__item">
-          <a className="locations__item-link tabs__item" href="/#">
-            <span>{city.name}</span>
+        <li key={city} className="locations__item">
+          <a
+            className={`locations__item-link tabs__item ${
+              city === activeCity ? 'tabs__item--active' : ''
+            }`}
+            href="/#"
+            onClick={clickHandler}
+          >
+            <span>{city}</span>
           </a>
         </li>
       ))}

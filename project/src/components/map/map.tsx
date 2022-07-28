@@ -4,9 +4,7 @@ import 'leaflet/dist/leaflet.css';
 
 import { Offer } from '../../types/offer';
 import useMap from '../../hooks/useMap';
-
-import { initialCoordinates } from '../../constants';
-import { URL_MARKER_DEFAULT } from '../../constants';
+import { URL_MARKER_DEFAULT, ZOOM_LEVEL } from '../../constants';
 
 const defaultIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -19,26 +17,38 @@ type Props = {
   mapClassName: string;
 };
 
-function Map({ offers, mapClassName }: Props): JSX.Element {
+function Map({offers, mapClassName }: Props): JSX.Element {
   const mapRef = useRef(null);
-  const map = useMap(mapRef, initialCoordinates);
+  const map = useMap(mapRef);
 
   useEffect(() => {
-    if (map) {
+    const initialCoordinates = {
+      lat: offers[0].city.location.latitude,
+      lng: offers[0].city.location.longitude,
+    };
+
+    map && map.setView(initialCoordinates, ZOOM_LEVEL);
+    const markerGroup = map && leaflet.layerGroup().addTo(map);
+
+    if (markerGroup) {
       offers.forEach((offer) => {
         leaflet
           .marker(
             {
-              lat: offer.city.location.latitude,
-              lng: offer.city.location.longitude,
+              lat: offer.location.latitude,
+              lng: offer.location.longitude,
             },
             {
               icon: defaultIcon,
             }
           )
-          .addTo(map);
+          .addTo(markerGroup);
       });
     }
+
+    // This row clears old markers
+    // While uncomment I get error
+    // return () => markerGroup?.clearLayers();
   }, [map, offers]);
 
   return (

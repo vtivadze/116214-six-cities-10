@@ -1,12 +1,13 @@
 import { useState } from 'react';
 
-import { offers } from '../../mocks/offers';
-import { PLACE_COUNT, cities } from '../../constants';
-
 import Header from '../../components/header/header';
 import OfferItem from '../../components/offer-item/offer-item';
 import CityList from '../../components/city-list/city-list';
 import Map from '../../components/map/map';
+import { useAppSelector } from '../../hooks';
+
+import { cities } from '../../constants';
+import { getActiveOffers } from '../../utils';
 
 function MainScreen(): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | undefined>();
@@ -16,6 +17,10 @@ function MainScreen(): JSX.Element {
   const handleActivateCard = (cardId: string) => {
     setActiveCardId(cardId);
   };
+
+  const offers = useAppSelector((state) => state.offers);
+  const city = useAppSelector((state) => state.city);
+  const activeOffers = getActiveOffers(offers, city);
 
   return (
     <div className="page page--gray page--main">
@@ -33,7 +38,7 @@ function MainScreen(): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {PLACE_COUNT} places to stay in Amsterdam
+                {activeOffers.length} places to stay in Amsterdam
               </b>
               <form className="places__sorting" action="/" method="get">
                 <span className="places__sorting-caption">Sort by</span>
@@ -62,7 +67,7 @@ function MainScreen(): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {offers.map((offer) => (
+                {activeOffers.map((offer) => (
                   <OfferItem
                     key={offer.id}
                     offer={offer}
@@ -74,7 +79,7 @@ function MainScreen(): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <Map offers={offers} mapClassName="cities__map" />
+              <Map offers={activeOffers} mapClassName="cities__map" />
             </div>
           </div>
         </div>
