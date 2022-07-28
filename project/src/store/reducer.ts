@@ -3,7 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { offers } from '../mocks/offers';
 import { changeCity, getOffers } from './action';
 
-const city = 'Amsterdam';
+const city = 'Paris';
 
 const initialState = {
   city,
