@@ -4,6 +4,4 @@ export const changeCity = createAction('changeCity', (city) => ({
   payload: city,
 }));
 
-export const getOffers = createAction('getOffers', (city) => ({
-  payload: city,
-}));
+export const getOffers = createAction('getOffers');
