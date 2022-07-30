@@ -7,7 +7,7 @@ import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks';
 
 import { cities } from '../../constants';
-import { getActiveOffers } from '../../utils';
+import { getCityOffers } from '../../utils';
 
 function MainScreen(): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | undefined>();
@@ -20,7 +20,7 @@ function MainScreen(): JSX.Element {
 
   const offers = useAppSelector((state) => state.offers);
   const city = useAppSelector((state) => state.city);
-  const activeOffers = getActiveOffers(offers, city);
+  const activeOffers = getCityOffers(offers, city);
 
   return (
     <div className="page page--gray page--main">
