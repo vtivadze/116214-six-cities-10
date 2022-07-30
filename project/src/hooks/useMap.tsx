@@ -2,30 +2,15 @@ import { MutableRefObject, useEffect, useState, useRef } from 'react';
 import leaflet from 'leaflet';
 import { Map } from 'leaflet';
 
-import { useAppSelector } from './';
-
-import { ZOOM_LEVEL } from '../constants';
-
 function useMap(
   mapRef: MutableRefObject<HTMLElement | null>
 ): Map | null {
-  const city = useAppSelector((state) => state.city);
-  const offers = useAppSelector((state) => state.offers);
-  const sampleCity = offers.find((offer) => offer.city.name === city);
-
   const [map, setMap] = useState<Map | null>(null);
   const isRenderedRef = useRef<boolean>(false);
 
   useEffect(() => {
-    const initialCoordinates = {
-      lat: sampleCity ? sampleCity.city.location.latitude : 0,
-      lng: sampleCity ? sampleCity.city.location.longitude : 0,
-    };
-
     if (mapRef.current !== null && !isRenderedRef.current) {
-      const instance = leaflet
-        .map(mapRef.current)
-        .setView(initialCoordinates, ZOOM_LEVEL);
+      const instance = leaflet.map(mapRef.current);
 
       leaflet.tileLayer(
         'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
@@ -38,7 +23,7 @@ function useMap(
       setMap(instance);
       isRenderedRef.current = true;
     }
-  }, [mapRef, sampleCity]);
+  }, [mapRef]);
 
   return map;
 }
