@@ -15,7 +15,7 @@ export const updateStore = createReducer(initialState, (builder) => {
     .addCase(changeCity, (state, action) => {
       state.city = action.payload;
     })
-    .addCase(getOffers, (state, action) => {
-      state.offers = offers.filter((offer) => offer.city.name === action.payload);
+    .addCase(getOffers, (state) => {
+      state.offers = offers;
     });
 });
