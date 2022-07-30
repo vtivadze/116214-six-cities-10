@@ -4,9 +4,7 @@ import 'leaflet/dist/leaflet.css';
 
 import { Offer } from '../../types/offer';
 import useMap from '../../hooks/useMap';
-
-import { initialCoordinates } from '../../constants';
-import { URL_MARKER_DEFAULT } from '../../constants';
+import { URL_MARKER_DEFAULT, ZOOM_LEVEL } from '../../constants';
 
 const defaultIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -21,32 +19,43 @@ type Props = {
 
 function Map({ offers, mapClassName }: Props): JSX.Element {
   const mapRef = useRef(null);
-  const map = useMap(mapRef, initialCoordinates);
+  const map = useMap(mapRef);
 
   useEffect(() => {
-    if (map) {
+    const initialCoordinates = {
+      lat: offers[0].city.location.latitude,
+      lng: offers[0].city.location.longitude,
+    };
+
+    if (!map) {
+      return;
+    }
+
+    map.setView(initialCoordinates, ZOOM_LEVEL);
+    const markerGroup = leaflet.layerGroup().addTo(map);
+
+    if (markerGroup) {
       offers.forEach((offer) => {
         leaflet
           .marker(
             {
-              lat: offer.city.location.latitude,
-              lng: offer.city.location.longitude,
+              lat: offer.location.latitude,
+              lng: offer.location.longitude,
             },
             {
               icon: defaultIcon,
             }
           )
-          .addTo(map);
+          .addTo(markerGroup);
       });
     }
+
+    return () => {
+      markerGroup?.clearLayers();
+    };
   }, [map, offers]);
 
-  return (
-    <section
-      className={`${mapClassName} map`}
-      ref={mapRef}
-    />
-  );
+  return <section className={`${mapClassName} map`} ref={mapRef} />;
 }
 
 export default Map;
