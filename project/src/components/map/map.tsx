@@ -17,7 +17,7 @@ type Props = {
   mapClassName: string;
 };
 
-function Map({offers, mapClassName }: Props): JSX.Element {
+function Map({ offers, mapClassName }: Props): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef);
 
@@ -27,8 +27,12 @@ function Map({offers, mapClassName }: Props): JSX.Element {
       lng: offers[0].city.location.longitude,
     };
 
-    map && map.setView(initialCoordinates, ZOOM_LEVEL);
-    const markerGroup = map && leaflet.layerGroup().addTo(map);
+    if (!map) {
+      return;
+    }
+
+    map.setView(initialCoordinates, ZOOM_LEVEL);
+    const markerGroup = leaflet.layerGroup().addTo(map);
 
     if (markerGroup) {
       offers.forEach((offer) => {
@@ -46,17 +50,12 @@ function Map({offers, mapClassName }: Props): JSX.Element {
       });
     }
 
-    // This row clears old markers
-    // While uncomment I get error
-    // return () => markerGroup?.clearLayers();
+    return () => {
+      markerGroup?.clearLayers();
+    };
   }, [map, offers]);
 
-  return (
-    <section
-      className={`${mapClassName} map`}
-      ref={mapRef}
-    />
-  );
+  return <section className={`${mapClassName} map`} ref={mapRef} />;
 }
 
 export default Map;
