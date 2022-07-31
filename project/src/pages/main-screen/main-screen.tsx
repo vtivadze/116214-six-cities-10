@@ -18,6 +18,8 @@ function MainScreen(): JSX.Element {
     setActiveCardId(cardId);
   };
 
+  // while defining a function 'selectCity' in util.js
+  // I get error that 'useAppSelector' is hook
   const offers = useAppSelector((state) => state.offers);
   const city = useAppSelector((state) => state.city);
   const cityOffers = getCityOffers(offers, city);
