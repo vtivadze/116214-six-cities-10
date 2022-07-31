@@ -7,7 +7,7 @@ import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks';
 
 import { cities } from '../../constants';
-import { getCityOffers } from '../../utils';
+import { getCityOffers, getMapCenterCoordinates } from '../../utils';
 
 function MainScreen(): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | undefined>();
@@ -21,6 +21,7 @@ function MainScreen(): JSX.Element {
   const offers = useAppSelector((state) => state.offers);
   const city = useAppSelector((state) => state.city);
   const cityOffers = getCityOffers(offers, city);
+  const mapCenterCoordinates = getMapCenterCoordinates(cityOffers[0].city.location);
 
   return (
     <div className="page page--gray page--main">
@@ -79,7 +80,11 @@ function MainScreen(): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <Map offers={cityOffers} mapClassName="cities__map" />
+              <Map
+                centerCoordinates={mapCenterCoordinates}
+                items={cityOffers}
+                mapClassName="cities__map"
+              />
             </div>
           </div>
         </div>

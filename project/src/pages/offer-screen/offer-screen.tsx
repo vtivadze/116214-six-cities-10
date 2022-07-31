@@ -11,7 +11,7 @@ import OfferItem from '../../components/offer-item/offer-item';
 import ReviewItem from '../../components/review-item/review-item';
 import Map from '../../components/map/map';
 
-import { calculateRatingPercentage } from '../../utils';
+import { calculateRatingPercentage, getMapCenterCoordinates } from '../../utils';
 
 const REVIEWS_COUNT = 10;
 const NEAR_PLACES_COUNT = 3;
@@ -28,6 +28,8 @@ function OfferScreen(): JSX.Element {
   const nearPlaces = offers
     .filter((item) => item.id !== +id)
     .slice(0, NEAR_PLACES_COUNT);
+
+  const mapCenterCoordinates = getMapCenterCoordinates(nearPlaces[0].city.location);
 
   return (
     <div className="page">
@@ -149,7 +151,11 @@ function OfferScreen(): JSX.Element {
               </section>
             </div>
           </div>
-          <Map offers={nearPlaces} mapClassName="property__map" />
+          <Map
+            centerCoordinates={mapCenterCoordinates}
+            items={nearPlaces}
+            mapClassName="property__map"
+          />
         </section>
         <div className="container">
           <section className="near-places places">

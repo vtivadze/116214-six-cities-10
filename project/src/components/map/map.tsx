@@ -3,6 +3,7 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { Offer } from '../../types/offer';
+import { MapCoordinates } from '../../types/location-coordinates';
 import useMap from '../../hooks/useMap';
 import { URL_MARKER_DEFAULT, ZOOM_LEVEL } from '../../constants';
 
@@ -13,29 +14,25 @@ const defaultIcon = leaflet.icon({
 });
 
 type Props = {
-  offers: Offer[];
+  centerCoordinates: MapCoordinates;
+  items: Offer[];
   mapClassName: string;
 };
 
-function Map({ offers, mapClassName }: Props): JSX.Element {
+function Map({ centerCoordinates, items, mapClassName }: Props): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef);
 
   useEffect(() => {
-    const initialCoordinates = {
-      lat: offers[0].city.location.latitude,
-      lng: offers[0].city.location.longitude,
-    };
-
     if (!map) {
       return;
     }
 
-    map.setView(initialCoordinates, ZOOM_LEVEL);
+    map.setView(centerCoordinates, ZOOM_LEVEL);
     const markerGroup = leaflet.layerGroup().addTo(map);
 
     if (markerGroup) {
-      offers.forEach((offer) => {
+      items.forEach((offer) => {
         leaflet
           .marker(
             {
@@ -53,7 +50,7 @@ function Map({ offers, mapClassName }: Props): JSX.Element {
     return () => {
       markerGroup?.clearLayers();
     };
-  }, [map, offers]);
+  }, [map, items, centerCoordinates]);
 
   return <section className={`${mapClassName} map`} ref={mapRef} />;
 }
