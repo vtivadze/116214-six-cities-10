@@ -20,7 +20,7 @@ function MainScreen(): JSX.Element {
 
   const offers = useAppSelector((state) => state.offers);
   const city = useAppSelector((state) => state.city);
-  const activeOffers = getCityOffers(offers, city);
+  const cityOffers = getCityOffers(offers, city);
 
   return (
     <div className="page page--gray page--main">
@@ -38,7 +38,7 @@ function MainScreen(): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <b className="places__found">
-                {activeOffers.length} places to stay in Amsterdam
+                {cityOffers.length} places to stay in Amsterdam
               </b>
               <form className="places__sorting" action="/" method="get">
                 <span className="places__sorting-caption">Sort by</span>
@@ -67,7 +67,7 @@ function MainScreen(): JSX.Element {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {activeOffers.map((offer) => (
+                {cityOffers.map((offer) => (
                   <OfferItem
                     key={offer.id}
                     offer={offer}
@@ -79,7 +79,7 @@ function MainScreen(): JSX.Element {
               </div>
             </section>
             <div className="cities__right-section">
-              <Map offers={activeOffers} mapClassName="cities__map" />
+              <Map offers={cityOffers} mapClassName="cities__map" />
             </div>
           </div>
         </div>
