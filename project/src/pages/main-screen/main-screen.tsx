@@ -7,8 +7,12 @@ import CityList from '../../components/city-list/city-list';
 import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks';
 
-import { cities } from '../../constants';
-import { getCityOffers, getMapCenterCoordinates } from '../../utils';
+import { cities, DEFAULT_SORTING_TYPE } from '../../constants';
+import {
+  getCityOffers,
+  getMapCenterCoordinates,
+  sortOffers,
+} from '../../utils';
 
 function MainScreen(): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | undefined>();
@@ -24,7 +28,16 @@ function MainScreen(): JSX.Element {
   const offers = useAppSelector((state) => state.offers);
   const city = useAppSelector((state) => state.city);
   const cityOffers = getCityOffers(offers, city);
-  const mapCenterCoordinates = getMapCenterCoordinates(cityOffers[0].city.location);
+
+  const sortingType = useAppSelector((state) => state.sortingType);
+  const sortedCityOffers =
+    sortingType === DEFAULT_SORTING_TYPE
+      ? cityOffers
+      : sortOffers(cityOffers, sortingType);
+
+  const mapCenterCoordinates = getMapCenterCoordinates(
+    cityOffers[0].city.location
+  );
 
   return (
     <div className="page page--gray page--main">
@@ -46,7 +59,7 @@ function MainScreen(): JSX.Element {
               </b>
               <SortingVariants />
               <div className="cities__places-list places__list tabs__content">
-                {cityOffers.map((offer) => (
+                {sortedCityOffers.map((offer) => (
                   <OfferItem
                     key={offer.id}
                     offer={offer}

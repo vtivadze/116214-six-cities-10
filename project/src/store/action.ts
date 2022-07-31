@@ -5,3 +5,7 @@ export const changeCity = createAction('changeCity', (city) => ({
 }));
 
 export const setOffers = createAction('setOffers');
+
+export const changeSortingType = createAction('changeSortingType', (sortingType) => ({
+  payload: sortingType,
+}));

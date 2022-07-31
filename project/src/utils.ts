@@ -13,3 +13,11 @@ export const getMapCenterCoordinates = (location: CityCoordinates): MapCoordinat
   lat: location.latitude,
   lng: location.longitude,
 });
+
+export const offersCompareFunction: {[key: string]: (a: Offer, b: Offer) => number} = {
+  'Price: low to high': (a, b) => a.price - b.price,
+  'Price: high to low':(a, b) => b.price - a.price,
+  'Top rated first': (a, b) => b.rating - a.rating,
+};
+
+export const sortOffers = (offers: Offer[], sortingType: string) => [...offers].sort(offersCompareFunction[sortingType]);

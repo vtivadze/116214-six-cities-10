@@ -1,29 +1,47 @@
+import { useState } from 'react';
+
+import SortingItem from '../sorting-item/sorting-item';
+import { useAppSelector } from '../../hooks';
+import { sortingType } from '../../constants';
+
 function SortingVariants(): JSX.Element {
+  const [sortingOpened, setSortingOpened] = useState(false);
+  const currentSortingType = useAppSelector((state) => state.sortingType);
+
+  const handleSortingOpenedChange = () => {
+    setSortingOpened((prevState) => !prevState);
+  };
+
+  const handleSortingTypeChange = () => {
+    setSortingOpened(false);
+  };
+
   return (
     <form className="places__sorting" action="/" method="get">
       <span className="places__sorting-caption">Sort by</span>
-      <span className="places__sorting-type" tabIndex={0}>
-        Popular
+      <span
+        className="places__sorting-type"
+        tabIndex={0}
+        onClick={handleSortingOpenedChange}
+      >
+        {currentSortingType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className="places__options places__options--custom places__options--opened">
-        <li
-          className="places__option places__option--active"
-          tabIndex={0}
-        >
-          Popular
-        </li>
-        <li className="places__option" tabIndex={0}>
-          Price: low to high
-        </li>
-        <li className="places__option" tabIndex={0}>
-          Price: high to low
-        </li>
-        <li className="places__option" tabIndex={0}>
-          Top rated first
-        </li>
+      <ul
+        className={`places__options places__options--custom ${
+          sortingOpened ? 'places__options--opened' : ''
+        }`}
+      >
+        {Object.values(sortingType).map((item) => (
+          <SortingItem
+            key={item}
+            itemSortingType={item}
+            currentSortingType={currentSortingType}
+            handleSortingTypeChange={handleSortingTypeChange}
+          />
+        ))}
       </ul>
     </form>
   );
