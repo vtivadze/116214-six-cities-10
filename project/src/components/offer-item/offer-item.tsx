@@ -10,6 +10,7 @@ type Props = {
   imageWrapperClassName: string;
   cardInfoClassName?: string;
   onActivateCard?: (offerId: string) => void;
+  onCardMouseLeave?: () => void;
 };
 
 function OfferItem({
@@ -18,16 +19,22 @@ function OfferItem({
   imageWrapperClassName,
   cardInfoClassName,
   onActivateCard,
+  onCardMouseLeave,
 }: Props): JSX.Element {
 
   const handleMouseOver = () => {
     onActivateCard && onActivateCard(offer.id.toString());
   };
 
+  const handleMouseLeave = () => {
+    onCardMouseLeave && onCardMouseLeave();
+  };
+
   return (
     <article
       className={`${itemClassName} place-card`}
       onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseLeave}
     >
       {offer.isPremium && (
         <div className="place-card__mark">

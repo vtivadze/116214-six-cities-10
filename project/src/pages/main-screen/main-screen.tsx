@@ -16,11 +16,13 @@ import {
 
 function MainScreen(): JSX.Element {
   const [activeCardId, setActiveCardId] = useState<string | undefined>();
-  // eslint-disable-next-line no-console
-  console.log(activeCardId);
 
   const handleActivateCard = (cardId: string) => {
     setActiveCardId(cardId);
+  };
+
+  const handleCardMouseLfeave = () => {
+    setActiveCardId(undefined);
   };
 
   // while defining a function 'selectCity' in util.js
@@ -66,6 +68,7 @@ function MainScreen(): JSX.Element {
                     itemClassName="cities__card"
                     imageWrapperClassName="cities__image-wrapper"
                     onActivateCard={handleActivateCard}
+                    onCardMouseLeave={handleCardMouseLfeave}
                   />
                 ))}
               </div>
@@ -75,6 +78,7 @@ function MainScreen(): JSX.Element {
                 centerCoordinates={mapCenterCoordinates}
                 items={cityOffers}
                 mapClassName="cities__map"
+                activeCardId={activeCardId}
               />
             </div>
           </div>
