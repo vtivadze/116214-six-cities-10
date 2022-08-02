@@ -6,6 +6,7 @@ import SortingVariants from '../../components/sorting-variants/sorting-variants'
 import CityList from '../../components/city-list/city-list';
 import Map from '../../components/map/map';
 import { useAppSelector } from '../../hooks';
+import { selectCity, selectOffers, selectSortingType } from '../../utils';
 
 import { cities, DEFAULT_SORTING_TYPE } from '../../constants';
 import {
@@ -25,13 +26,12 @@ function MainScreen(): JSX.Element {
     setActiveCardId(undefined);
   };
 
-  // while defining a function 'selectCity' in util.js
-  // I get error that 'useAppSelector' is hook
-  const offers = useAppSelector((state) => state.offers);
-  const city = useAppSelector((state) => state.city);
+  const offers = useAppSelector(selectOffers);
+  const city = useAppSelector(selectCity);
+
   const cityOffers = getCityOffers(offers, city);
 
-  const sortingType = useAppSelector((state) => state.sortingType);
+  const sortingType = useAppSelector(selectSortingType);
   const sortedCityOffers =
     sortingType === DEFAULT_SORTING_TYPE
       ? cityOffers

@@ -3,10 +3,11 @@ import { useState } from 'react';
 import SortingItem from '../sorting-item/sorting-item';
 import { useAppSelector } from '../../hooks';
 import { sortingType } from '../../constants';
+import { selectSortingType } from '../../utils';
 
 function SortingVariants(): JSX.Element {
   const [sortingOpened, setSortingOpened] = useState(false);
-  const currentSortingType = useAppSelector((state) => state.sortingType);
+  const currentSortingType = useAppSelector(selectSortingType);
 
   const handleSortingOpenedChange = () => {
     setSortingOpened((prevState) => !prevState);
