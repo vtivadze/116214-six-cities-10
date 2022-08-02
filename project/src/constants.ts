@@ -20,12 +20,12 @@ export const cities = [
   'Dusseldorf',
 ];
 
-export const sortingType = {
-  POPULAR: 'Popular',
-  PRICE_ASCENDING: 'Price: low to high',
-  PRICE_DESCENDING: 'Price: high to low',
-  RATING_DESCENDING: 'Top rated first',
-};
+export enum SortingType {
+  Popular = 'Popular',
+  PriceAscending = 'Price: low to high',
+  PriceDescending = 'Price: high to low',
+  RatingDescending = 'Top rated first',
+}
 
-export const DEFAULT_SORTING_TYPE = sortingType.POPULAR;
+export const DEFAULT_SORTING_TYPE = SortingType.Popular;
 

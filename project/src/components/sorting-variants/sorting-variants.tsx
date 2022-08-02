@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import SortingItem from '../sorting-item/sorting-item';
 import { useAppSelector } from '../../hooks';
-import { sortingType } from '../../constants';
+import { SortingType } from '../../constants';
 import { selectSortingType } from '../../utils';
 
 function SortingVariants(): JSX.Element {
@@ -35,7 +35,7 @@ function SortingVariants(): JSX.Element {
           sortingOpened ? 'places__options--opened' : ''
         }`}
       >
-        {Object.values(sortingType).map((item) => (
+        {Object.values(SortingType).map((item) => (
           <SortingItem
             key={item}
             itemSortingType={item}

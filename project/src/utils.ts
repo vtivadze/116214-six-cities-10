@@ -1,6 +1,7 @@
 import { Offer } from './types/offer';
 import { CityCoordinates, MapCoordinates } from './types/location-coordinates';
 import { State } from './types/state';
+import { SortingType } from './constants';
 
 const ONE_STAR_PERCENTAGE = 20;
 
@@ -20,9 +21,9 @@ export const getMapCenterCoordinates = (
 export const offersCompareFunction: {
   [key: string]: (a: Offer, b: Offer) => number;
 } = {
-  'Price: low to high': (a, b) => a.price - b.price,
-  'Price: high to low': (a, b) => b.price - a.price,
-  'Top rated first': (a, b) => b.rating - a.rating,
+  [SortingType.PriceAscending]: (a, b) => a.price - b.price,
+  [SortingType.PriceDescending]: (a, b) => b.price - a.price,
+  [SortingType.RatingDescending]: (a, b) => b.rating - a.rating,
 };
 
 export const sortOffers = (offers: Offer[], sortingType: string) =>
