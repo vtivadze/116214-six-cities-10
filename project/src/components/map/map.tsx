@@ -3,8 +3,13 @@ import leaflet from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 import { Offer } from '../../types/offer';
+import { MapCoordinates } from '../../types/location-coordinates';
 import useMap from '../../hooks/useMap';
-import { URL_MARKER_DEFAULT, ZOOM_LEVEL } from '../../constants';
+import {
+  URL_MARKER_DEFAULT,
+  URL_MARKER_ACTIVE,
+  ZOOM_LEVEL,
+} from '../../constants';
 
 const defaultIcon = leaflet.icon({
   iconUrl: URL_MARKER_DEFAULT,
@@ -12,30 +17,38 @@ const defaultIcon = leaflet.icon({
   iconAnchor: [20, 40],
 });
 
+const activeIcon = leaflet.icon({
+  iconUrl: URL_MARKER_ACTIVE,
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+});
+
 type Props = {
-  offers: Offer[];
+  centerCoordinates: MapCoordinates;
+  items: Offer[];
   mapClassName: string;
+  activeCardId?: string | undefined;
 };
 
-function Map({ offers, mapClassName }: Props): JSX.Element {
+function Map({
+  centerCoordinates,
+  items,
+  mapClassName,
+  activeCardId,
+}: Props): JSX.Element {
   const mapRef = useRef(null);
   const map = useMap(mapRef);
 
   useEffect(() => {
-    const initialCoordinates = {
-      lat: offers[0].city.location.latitude,
-      lng: offers[0].city.location.longitude,
-    };
-
     if (!map) {
       return;
     }
 
-    map.setView(initialCoordinates, ZOOM_LEVEL);
+    map.setView(centerCoordinates, ZOOM_LEVEL);
     const markerGroup = leaflet.layerGroup().addTo(map);
 
     if (markerGroup) {
-      offers.forEach((offer) => {
+      items.forEach((offer) => {
         leaflet
           .marker(
             {
@@ -43,7 +56,10 @@ function Map({ offers, mapClassName }: Props): JSX.Element {
               lng: offer.location.longitude,
             },
             {
-              icon: defaultIcon,
+              icon:
+                offer.id.toString(10) === activeCardId
+                  ? activeIcon
+                  : defaultIcon,
             }
           )
           .addTo(markerGroup);
@@ -53,7 +69,7 @@ function Map({ offers, mapClassName }: Props): JSX.Element {
     return () => {
       markerGroup?.clearLayers();
     };
-  }, [map, offers]);
+  }, [map, items, centerCoordinates, activeCardId]);
 
   return <section className={`${mapClassName} map`} ref={mapRef} />;
 }
