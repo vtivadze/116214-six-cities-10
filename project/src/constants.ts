@@ -27,5 +27,11 @@ export enum SortingType {
   RatingDescending = 'Top rated first',
 }
 
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN',
+}
+
 export const DEFAULT_SORTING_TYPE = SortingType.Popular;
 
