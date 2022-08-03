@@ -5,11 +5,11 @@ import { changeCity, setOffers, changeSortingType } from './action';
 
 const initialState = {
   city: INITIAL_CITY,
-  offers,
+  offers: [],
   sortingType: DEFAULT_SORTING_TYPE,
 };
 
-export const updateStore = createReducer(initialState, (builder) => {
+export const reducer = createReducer(initialState, (builder) => {
   builder
     .addCase(changeCity, (state, action) => {
       state.city = action.payload;
