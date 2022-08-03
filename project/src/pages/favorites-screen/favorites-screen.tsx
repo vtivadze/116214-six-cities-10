@@ -1,7 +1,5 @@
 import { Offer } from '../../types/offer';
 
-import { offers } from '../../mocks/offers';
-
 import Header from '../../components/header/header';
 import OfferItem from '../../components/offer-item/offer-item';
 

@@ -2,9 +2,6 @@ import { useParams } from 'react-router-dom';
 
 import { Offer } from '../../types/offer';
 
-import { offers } from '../../mocks/offers';
-import { reviews } from '../../mocks/reviews';
-
 import Header from '../../components/header/header';
 import CommentForm from '../../components/comment-form/comment-form';
 import OfferItem from '../../components/offer-item/offer-item';
