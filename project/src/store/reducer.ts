@@ -1,9 +1,17 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 import { INITIAL_CITY, DEFAULT_SORTING_TYPE, AuthorizationStatus } from '../constants';
+import { Offer } from '../types/offer';
 import { changeCity, loadOffers, changeSortingType, requireAuthorization } from './action';
 
-const initialState = {
+type InitialState = {
+  city: string,
+  offers: Offer[],
+  sortingType: string,
+  authorizationStatus: AuthorizationStatus,
+};
+
+const initialState: InitialState = {
   city: INITIAL_CITY,
   offers: [],
   sortingType: DEFAULT_SORTING_TYPE,
