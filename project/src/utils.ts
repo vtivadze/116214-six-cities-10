@@ -32,3 +32,4 @@ export const sortOffers = (offers: Offer[], sortingType: string) =>
 export const selectCity = (state: State) => state.city;
 export const selectOffers = (state: State) => state.offers;
 export const selectSortingType = (state: State) => state.sortingType;
+export const selectError = (state: State) => state.error;
