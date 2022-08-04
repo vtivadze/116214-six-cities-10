@@ -33,5 +33,11 @@ export enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
+export enum APIRoute {
+  Offers = '/hotels',
+  Login = '/login',
+  Logout = '/logout',
+}
+
 export const DEFAULT_SORTING_TYPE = SortingType.Popular;
 
