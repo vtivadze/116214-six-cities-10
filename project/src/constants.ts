@@ -3,6 +3,7 @@ export const URL_MARKER_DEFAULT = 'img/pin.svg';
 export const URL_MARKER_ACTIVE = 'img/pin-active.svg';
 export const ZOOM_LEVEL = 10;
 export const INITIAL_CITY = 'Paris';
+export const TIMEOUT_SHOW_ERROR = 2000;
 
 export enum AppRoute {
   Root = '/',
