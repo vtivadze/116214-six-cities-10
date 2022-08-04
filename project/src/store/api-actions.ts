@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
 import { AppDispatch, State } from '../types/state';
-import { loadOffers, requireAuthorization, setError} from './action';
+import { loadOffers, requireAuthorization, setError, setDataLoadedStatus, loadReviews} from './action';
 import { Offer } from '../types/offer';
 import { APIRoute, AuthorizationStatus, TIMEOUT_SHOW_ERROR } from '../constants';
 import { UserData } from '../types/user-data';
@@ -17,7 +17,23 @@ export const fetchOffersAction = createAsyncThunk<void, undefined, {
   'fetchOffers',
   async (_arg, {dispatch, extra: api}) => {
     const {data} = await api.get<Offer[]>(APIRoute.Offers);
+    dispatch(setDataLoadedStatus(true));
     dispatch(loadOffers(data));
+    dispatch(setDataLoadedStatus(false));
+  },
+);
+
+export const fetchReviewsAction = createAsyncThunk<void, undefined, {
+  dispatch: AppDispatch,
+  state: State,
+  extra: AxiosInstance
+}>(
+  'fetchReviews',
+  async (_arg, {dispatch, state, extra: api}) => {
+    const {data} = await api.get<Offer[]>(APIRoute.Reviews, {params: {hotelId: state.offerId}});
+    dispatch(setDataLoadedStatus(true));
+    dispatch(loadReviews(data));
+    dispatch(setDataLoadedStatus(false));
   },
 );
 

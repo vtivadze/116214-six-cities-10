@@ -1,14 +1,15 @@
 import { useParams } from 'react-router-dom';
-
 import { Offer } from '../../types/offer';
-
 import Header from '../../components/header/header';
 import CommentForm from '../../components/comment-form/comment-form';
 import OfferItem from '../../components/offer-item/offer-item';
 import ReviewItem from '../../components/review-item/review-item';
 import Map from '../../components/map/map';
-
-import { calculateRatingPercentage, getMapCenterCoordinates } from '../../utils';
+import { calculateRatingPercentage, getMapCenterCoordinates, selectOffers } from '../../utils';
+import { useAppSelector } from '../../hooks';
+import { store } from '../../store';
+import { fetchReviewsAction } from '../../store/api-actions';
+import { setOfferId } from '../../store/action';
 
 const REVIEWS_COUNT = 10;
 const NEAR_PLACES_COUNT = 3;
@@ -16,7 +17,12 @@ const NEAR_PLACES_COUNT = 3;
 function OfferScreen(): JSX.Element {
   const params = useParams();
   const id = params.id as string;
+  store.dispatch(setOfferId(id));
+
+  const offers = useAppSelector(selectOffers);
   const offer = offers.find((item: Offer) => item.id === +id) as Offer;
+
+  store.dispatch(fetchReviewsAction());
 
   const reviewsToDisplay = [...reviews]
     .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))

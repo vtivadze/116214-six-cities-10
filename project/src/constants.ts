@@ -1,7 +1,7 @@
 export const STARS_COUNT = 5;
 export const URL_MARKER_DEFAULT = 'img/pin.svg';
 export const URL_MARKER_ACTIVE = 'img/pin-active.svg';
-export const ZOOM_LEVEL = 10;
+export const ZOOM_LEVEL = 12;
 export const INITIAL_CITY = 'Paris';
 export const TIMEOUT_SHOW_ERROR = 2000;
 
@@ -36,6 +36,7 @@ export enum AuthorizationStatus {
 
 export enum APIRoute {
   Offers = '/hotels',
+  Reviews = '/comments/:hotelId',
   Login = '/login',
   Logout = '/logout',
 }

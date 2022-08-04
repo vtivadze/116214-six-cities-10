@@ -9,6 +9,10 @@ export const loadOffers = createAction('loadOffers', (offers) => ({
   payload: offers,
 }));
 
+export const loadReviews = createAction('loadReviews', (reviews) => ({
+  payload: reviews,
+}));
+
 export const changeSortingType = createAction('changeSortingType', (sortingType) => ({
   payload: sortingType,
 }));
@@ -16,3 +20,9 @@ export const changeSortingType = createAction('changeSortingType', (sortingType)
 export const requireAuthorization = createAction<AuthorizationStatus>('requireAuthorization');
 
 export const setError = createAction<string | null>('setError');
+
+export const setDataLoadedStatus = createAction<boolean>('setDataLoadedStatus');
+
+export const setOfferId = createAction('setOfferId', (offerId) => ({
+  payload: offerId,
+}));

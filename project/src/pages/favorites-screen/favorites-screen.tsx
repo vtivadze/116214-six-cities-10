@@ -1,7 +1,8 @@
 import { Offer } from '../../types/offer';
-
 import Header from '../../components/header/header';
 import OfferItem from '../../components/offer-item/offer-item';
+import { useAppSelector } from '../../hooks';
+import { selectOffers } from '../../utils';
 
 export interface Favorites {
   [key: string]: Offer[];
@@ -20,6 +21,8 @@ function groupFavoritesByCity(favoriteOffers: Offer[]) {
 }
 
 function FavoritesScreen(): JSX.Element {
+  const offers = useAppSelector(selectOffers);
+
   return (
     <div className="page">
       <Header />

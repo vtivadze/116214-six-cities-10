@@ -1,7 +1,7 @@
 import { Offer } from './types/offer';
 import { CityCoordinates, MapCoordinates } from './types/location-coordinates';
 import { State } from './types/state';
-import { SortingType } from './constants';
+import { AuthorizationStatus, SortingType } from './constants';
 
 const ONE_STAR_PERCENTAGE = 20;
 
@@ -29,7 +29,14 @@ export const offersCompareFunction: {
 export const sortOffers = (offers: Offer[], sortingType: string) =>
   [...offers].sort(offersCompareFunction[sortingType]);
 
+export const isCheckedAuth = (
+  authorizationStatus: AuthorizationStatus
+): boolean => authorizationStatus === AuthorizationStatus.Unknown;
+
 export const selectCity = (state: State) => state.city;
 export const selectOffers = (state: State) => state.offers;
 export const selectSortingType = (state: State) => state.sortingType;
 export const selectError = (state: State) => state.error;
+export const selectAuthorizationStatus = (state: State) =>
+  state.authorizationStatus;
+export const selectIsDataLoaded = (state: State) => state.isDataLoaded;
